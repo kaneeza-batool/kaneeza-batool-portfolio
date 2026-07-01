@@ -19,7 +19,7 @@ export default function Skills() {
     <section id="skills" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <p className="font-mono text-xs text-brand-violet uppercase tracking-widest mb-3">
-          03 / Skills
+          02 / Skills
         </p>
 
         <h2 className="font-display font-bold text-4xl lg:text-5xl mb-10">

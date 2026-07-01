@@ -1,22 +1,23 @@
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { useCountUp } from '../hooks/useCountUp.jsx'
 
 const avatarSrc = 'https://avatars.githubusercontent.com/u/245690110?v=4'
 const roles = ['Frontend Developer', 'MERN Stack Developer', 'Open to Remote Work']
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-}
-
 export default function Hero() {
+  const prefersReducedMotion = useReducedMotion()
+
+  const containerVariants = {
+    hidden: { opacity: prefersReducedMotion ? 1 : 0 },
+    visible: { opacity: 1, transition: prefersReducedMotion ? {} : { staggerChildren: 0.15 } },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: prefersReducedMotion ? 0 : 0.6, ease: 'easeOut' } },
+  }
   const [displayText, setDisplayText] = useState('')
   const [roleIndex, setRoleIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
@@ -76,7 +77,8 @@ export default function Hero() {
           filter: 'blur(80px)',
           top: '10%',
           left: '15%',
-          animation: 'float1 8s ease-in-out infinite alternate',
+          animation: prefersReducedMotion ? 'none' : 'float1 8s ease-in-out infinite alternate',
+          willChange: 'transform',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -92,7 +94,8 @@ export default function Hero() {
           filter: 'blur(80px)',
           bottom: '0',
           right: '15%',
-          animation: 'float2 10s ease-in-out infinite alternate',
+          animation: prefersReducedMotion ? 'none' : 'float2 10s ease-in-out infinite alternate',
+          willChange: 'transform',
           pointerEvents: 'none',
           zIndex: 0,
         }}
@@ -165,6 +168,7 @@ export default function Hero() {
               href="https://github.com/kaneeza-batool"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub profile"
               className="text-slate-400 hover:text-brand-violet-light hover:scale-110 transition-all"
             >
               <FaGithub size={20} />
@@ -173,12 +177,14 @@ export default function Hero() {
               href="https://linkedin.com/in/kaneeza-batool"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
               className="text-slate-400 hover:text-brand-violet-light hover:scale-110 transition-all"
             >
               <FaLinkedin size={20} />
             </a>
             <a
               href="mailto:kaneezabatoolmemon@gmail.com"
+              aria-label="Send email"
               className="text-slate-400 hover:text-brand-violet-light hover:scale-110 transition-all"
             >
               <FaEnvelope size={20} />
@@ -196,7 +202,8 @@ export default function Hero() {
                 inset: '-20px',
                 borderRadius: '9999px',
                 border: '1px solid rgba(167,139,250,0.25)',
-                animation: 'spin 12s linear infinite reverse',
+                animation: prefersReducedMotion ? 'none' : 'spin 12s linear infinite reverse',
+                willChange: 'transform',
               }}
             />
             {/* Inner ring */}
@@ -206,13 +213,16 @@ export default function Hero() {
                 inset: '-8px',
                 borderRadius: '9999px',
                 border: '2px solid rgba(124,58,237,0.6)',
-                animation: 'spin 8s linear infinite',
+                animation: prefersReducedMotion ? 'none' : 'spin 8s linear infinite',
+                willChange: 'transform',
               }}
             />
             {/* Avatar */}
             <img
               src={avatarSrc}
               alt="Kaneeza Batool"
+              loading="lazy"
+              decoding="async"
               className="w-[220px] h-[220px] lg:w-[280px] lg:h-[280px] object-cover"
               style={{
                 borderRadius: '9999px',

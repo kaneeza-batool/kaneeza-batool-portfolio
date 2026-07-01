@@ -6,7 +6,7 @@ export default function Journey() {
     <section id="journey" className="py-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         <p className="font-mono text-xs text-brand-violet uppercase tracking-widest mb-3">
-          06 / Journey
+          05 / Journey
         </p>
         <h2 className="font-display font-bold text-4xl lg:text-5xl mb-16">
           My <span className="gradient-text">Journey</span>

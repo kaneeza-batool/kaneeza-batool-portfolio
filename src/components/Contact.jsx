@@ -99,7 +99,7 @@ export default function Contact() {
           viewport={{ once: true }}
         >
           <p className="font-mono text-xs text-brand-violet uppercase tracking-widest mb-3">
-            07 / Contact
+            06 / Contact
           </p>
           <h2 className="font-display font-bold text-4xl lg:text-5xl mb-4">
             Get <span className="gradient-text">In Touch</span>
@@ -143,7 +143,11 @@ export default function Contact() {
                 {/* Name + Email row */}
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
+                    <label htmlFor="name" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                      Name
+                    </label>
                     <input
+                      id="name"
                       className={inputClass}
                       type="text"
                       name="name"
@@ -157,7 +161,11 @@ export default function Contact() {
                     )}
                   </div>
                   <div>
+                    <label htmlFor="email" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                      Email
+                    </label>
                     <input
+                      id="email"
                       className={inputClass}
                       type="email"
                       name="email"
@@ -174,7 +182,11 @@ export default function Contact() {
 
                 {/* Subject */}
                 <div>
+                  <label htmlFor="subject" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                    Subject <span className="normal-case text-slate-600">(optional)</span>
+                  </label>
                   <input
+                    id="subject"
                     className={inputClass}
                     type="text"
                     name="subject"
@@ -190,7 +202,11 @@ export default function Contact() {
 
                 {/* Message */}
                 <div>
+                  <label htmlFor="message" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                    Message
+                  </label>
                   <textarea
+                    id="message"
                     className={inputClass}
                     name="message"
                     placeholder="Tell me about your project or just say hi..."

@@ -18,7 +18,7 @@ export default function Programs() {
     <section id="programs" className="py-24 bg-brand-secondary/20">
       <div className="max-w-6xl mx-auto px-6">
         <p className="font-mono text-xs text-brand-violet uppercase tracking-widest mb-3">
-          05 / Programs
+          04 / Programs
         </p>
 
         <h2 className="font-display font-bold text-4xl lg:text-5xl mb-12">

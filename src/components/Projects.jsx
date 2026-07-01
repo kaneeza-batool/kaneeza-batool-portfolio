@@ -34,7 +34,7 @@ export default function Projects() {
     <section id="projects" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
         <p className="font-mono text-xs text-brand-violet uppercase tracking-widest mb-3">
-          04 / Projects
+          03 / Projects
         </p>
 
         <h2 className="font-display font-bold text-4xl lg:text-5xl mb-10">
