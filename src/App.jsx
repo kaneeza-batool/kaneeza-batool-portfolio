@@ -6,6 +6,7 @@ import Skills from  './components/Skills'
 import Projects from './components/Projects'
 import Programs from './components/Programs'
 import Journey from './components/Journey'
+import Contact from './components/Contact'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Projects />
       <Programs />
       <Journey />
+      <Contact />
       <section id="contact" />
     </main>
   )
