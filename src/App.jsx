@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Skills from  './components/Skills'
 import Projects from './components/Projects'
+import Programs from './components/Programs'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <About />
       <Skills />
       <Projects />
-      <section id="programs" />
+      <Programs />
       <section id="journey" />
       <section id="contact" />
     </main>
