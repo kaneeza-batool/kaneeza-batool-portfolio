@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import { useCountUp } from '../hooks/useCountUp.jsx'
+import avatarImg from '../assets/avatar.png'
 
-const avatarSrc = 'https://avatars.githubusercontent.com/u/245690110?v=4'
+const avatarSrc = avatarImg || 'https://avatars.githubusercontent.com/u/245690110?v=4'
 const roles = ['Frontend Developer', 'MERN Stack Developer', 'Open to Remote Work']
 
 export default function Hero() {
