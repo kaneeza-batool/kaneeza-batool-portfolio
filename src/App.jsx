@@ -22,16 +22,18 @@ function App() {
   }, [])
 
   return (
-    <main className="bg-brand-bg min-h-screen">
+    <>
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Programs />
-      <Journey />
-      <Contact />
-      <Footer />
+      <main className="bg-brand-bg min-h-screen">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Programs />
+        <Journey />
+        <Contact />
+        <Footer />
+      </main>
 
       <AnimatePresence>
         {showTop && (
@@ -49,7 +51,7 @@ function App() {
           </motion.button>
         )}
       </AnimatePresence>
-    </main>
+    </>
   )
 }
 
