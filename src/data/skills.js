@@ -6,6 +6,7 @@ export const skills = {
     { name: 'JavaScript', percentage: 82 },
     { name: 'React', percentage: 75 },
     { name: 'Redux', percentage: 65, inProgress: true },
+    { name: 'Tailwind CSS', percentage: 60, inProgress: true },
   ],
   backend: [
     { name: 'Node.js', percentage: 40, inProgress: true },
@@ -23,12 +24,14 @@ export const skills = {
     { name: 'GitHub', percentage: 85 },
     { name: 'VS Code', percentage: 90 },
     { name: 'Notion', percentage: 80 },
+    { name: 'Vercel', percentage: 70 },
+    { name: 'Netlify', percentage: 75 },
   ],
   dsa: [
     { name: 'Arrays', percentage: 75 },
     { name: 'Strings', percentage: 70 },
     { name: 'Simulation', percentage: 70 },
-    { name: 'Two Pointers', percentage: 50 },
-    { name: 'HashMaps', percentage: 45 },
+    { name: 'Two Pointers', percentage: 50, inProgress: true },
+    { name: 'HashMaps', percentage: 45, inProgress: true },
   ],
 }

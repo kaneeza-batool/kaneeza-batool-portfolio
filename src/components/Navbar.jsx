@@ -1,66 +1,97 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Programs', href: '#programs' },
+  { label: 'Certifications', href: '#certifications' },
+  { label: 'Journey', href: '#journey' },
   { label: 'Contact', href: '#contact' },
-];
+]
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 80);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const handleScroll = () => setIsScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
-  const closeMobile = () => setIsMobileOpen(false);
+  useEffect(() => {
+    const sectionIds = NAV_LINKS.map(l => l.href.slice(1))
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
           isScrolled
-            ? 'backdrop-blur-xl bg-[#0D0B2A]/80 border-b border-[#7C3AED]/20'
+            ? 'backdrop-blur-2xl bg-[#0D0B1F]/75 border-b border-[#7C3AED]/15 shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
             : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="font-display font-bold text-xl text-white">
+          <a
+            href="#"
+            className="font-display font-bold text-xl text-white tracking-tight"
+            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+          >
             Kaneeza<span className="text-brand-violet">.</span>
           </a>
 
-          {/* Desktop nav links */}
-          <ul className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map(({ label, href }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  className="text-slate-400 text-sm font-body tracking-wide hover:text-white transition-colors"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
+          <ul className="hidden lg:flex items-center gap-1">
+            {NAV_LINKS.map(({ label, href }) => {
+              const isActive = activeSection === href.slice(1)
+              return (
+                <li key={label}>
+                  <a
+                    href={href}
+                    className={`relative px-3 py-2 text-sm font-body tracking-wide transition-colors rounded-lg ${
+                      isActive ? 'text-white' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-indicator"
+                        className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-brand-violet"
+                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
 
-          {/* Hire Me button */}
           <a
             href="mailto:kaneezabatoolmemon@gmail.com"
-            className="hidden md:inline-flex items-center bg-brand-violet text-white font-bold text-sm px-5 py-2 rounded-full transition-all duration-200 hover:shadow-[0_0_20px_rgba(124,58,237,0.6)] hover:scale-[1.02]"
+            className="hidden lg:inline-flex btn-primary text-sm"
           >
             Hire Me
           </a>
 
-          {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white p-1"
+            className="lg:hidden text-white p-1"
             onClick={() => setIsMobileOpen(true)}
             aria-label="Open navigation menu"
           >
@@ -69,37 +100,49 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile overlay */}
-      {isMobileOpen && (
-        <div className="fixed inset-0 z-[100] bg-brand-bg flex flex-col items-center justify-center gap-8">
-          <button
-            className="absolute top-5 right-6 text-white"
-            onClick={closeMobile}
-            aria-label="Close navigation menu"
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            key="mobile-nav"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] bg-brand-bg/95 backdrop-blur-2xl flex flex-col items-center justify-center gap-7"
           >
-            <X size={28} />
-          </button>
-
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              onClick={closeMobile}
-              className="text-white font-display font-bold text-2xl hover:text-brand-violet transition-colors"
+            <button
+              className="absolute top-5 right-6 text-white"
+              onClick={() => setIsMobileOpen(false)}
+              aria-label="Close navigation menu"
             >
-              {label}
-            </a>
-          ))}
+              <X size={28} />
+            </button>
 
-          <a
-            href="mailto:kaneezabatoolmemon@gmail.com"
-            onClick={closeMobile}
-            className="mt-4 bg-brand-violet text-white font-bold text-sm px-6 py-3 rounded-full hover:shadow-[0_0_20px_rgba(124,58,237,0.6)] transition-all duration-200"
-          >
-            Hire Me
-          </a>
-        </div>
-      )}
+            {NAV_LINKS.map(({ label, href }, i) => (
+              <motion.a
+                key={label}
+                href={href}
+                onClick={() => setIsMobileOpen(false)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="font-display font-bold text-2xl text-white hover:text-brand-violet-light transition-colors"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+              >
+                {label}
+              </motion.a>
+            ))}
+
+            <a
+              href="mailto:kaneezabatoolmemon@gmail.com"
+              onClick={() => setIsMobileOpen(false)}
+              className="mt-4 btn-primary"
+            >
+              Hire Me
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
-  );
+  )
 }

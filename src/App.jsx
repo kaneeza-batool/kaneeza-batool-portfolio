@@ -5,9 +5,10 @@ import './index.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import Skills from  './components/Skills'
+import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Programs from './components/Programs'
+import Certifications from './components/Certifications'
 import Journey from './components/Journey'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -30,6 +31,7 @@ function App() {
         <Skills />
         <Projects />
         <Programs />
+        <Certifications />
         <Journey />
         <Contact />
         <Footer />
@@ -45,7 +47,15 @@ function App() {
             transition={{ duration: 0.2 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Back to top"
-            className="fixed bottom-6 right-6 z-50 bg-brand-secondary border border-brand-violet/40 text-brand-violet-light p-3 rounded-full hover:bg-brand-violet/20 hover:border-brand-violet transition-all shadow-[0_4px_20px_rgba(124,58,237,0.2)]"
+            className="fixed bottom-6 right-6 z-50 p-3 rounded-full transition-all"
+            style={{
+              background: 'rgba(26,21,96,0.8)',
+              border: '1px solid rgba(124,58,237,0.35)',
+              color: '#A78BFA',
+              backdropFilter: 'blur(12px)',
+              boxShadow: '0 4px 20px rgba(124,58,237,0.2)',
+            }}
+            whileHover={{ boxShadow: '0 0 20px rgba(124,58,237,0.5)' }}
           >
             <ArrowUp size={18} />
           </motion.button>

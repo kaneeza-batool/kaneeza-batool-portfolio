@@ -1,11 +1,16 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, MapPin, Target, Briefcase, Mail } from 'lucide-react'
+import { GraduationCap, MapPin, Target, Briefcase, Mail, Calendar } from 'lucide-react'
 
 const cards = [
   {
     icon: GraduationCap,
     label: 'Education',
-    value: 'BS Computer Science — IBA Sukkur (2024–2028)',
+    value: 'BS Computer Science — Sukkur IBA University (2024–2028)',
+  },
+  {
+    icon: Calendar,
+    label: 'Currently',
+    value: '4th Semester · Building toward Full Stack',
   },
   {
     icon: MapPin,
@@ -15,12 +20,12 @@ const cards = [
   {
     icon: Target,
     label: 'Focus',
-    value: 'Frontend → Full Stack',
+    value: 'Frontend → Full Stack MERN',
   },
   {
     icon: Briefcase,
     label: 'Looking For',
-    value: 'Remote roles & real projects',
+    value: 'Remote roles & real-world projects',
   },
   {
     icon: Mail,
@@ -36,75 +41,86 @@ const cards = [
   },
 ]
 
-const cardContainerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, x: 20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
-
 export default function About() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-28 relative overflow-hidden">
+      {/* Background glow */}
+      <div
+        className="radial-glow"
+        style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.06)', top: '20%', right: '-10%' }}
+      />
+
       <motion.div
-        className="max-w-6xl mx-auto px-6"
+        className="max-w-6xl mx-auto px-6 relative z-10"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.65 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
-        <p className="font-mono text-xs text-brand-violet uppercase tracking-widest mb-3">
-          01 / About
-        </p>
-
-        <h2 className="font-display font-bold text-4xl lg:text-5xl mb-12">
+        <span className="section-label">01 / About</span>
+        <h2 className="section-heading mb-14">
           About <span className="gradient-text">Me</span>
         </h2>
 
         <div className="grid lg:grid-cols-5 gap-12">
           {/* Left — Story */}
-          <div className="lg:col-span-3">
-            <p className="font-body text-slate-300 leading-relaxed text-base">
-              I'm a Computer Science student at Sukkur IBA University and a frontend trainee at
-              SMIT. I build interfaces — clean, functional, and thought through. Not just pages that
-              look good, but things that work.
+          <div className="lg:col-span-3 space-y-5">
+            <p className="font-body text-[rgba(249,250,251,0.75)] leading-relaxed text-[1.0625rem]">
+              I'm a Computer Science student at Sukkur IBA University, currently in my 4th semester,
+              and a frontend developer building production-ready interfaces from one of Pakistan's smaller cities.
             </p>
-            <p className="font-body text-slate-300 leading-relaxed text-base mt-4">
-              I started with HTML. Then I did it again. And again. For a year. Not because I was
-              stuck — because I kept finding something to fix. When Saylani opened a campus in
-              Sukkur, I enrolled the same week. That's when things accelerated.
+            <p className="font-body text-[rgba(249,250,251,0.75)] leading-relaxed text-[1.0625rem]">
+              I started with HTML and CSS in late 2024, enrolled in Saylani Mass IT Training when they opened
+              in Sukkur, and accelerated fast — shipping a live e-commerce frontend, a currency converter with
+              API integration, and multiple React applications within my first year of serious development.
             </p>
-            <p className="font-body text-slate-300 leading-relaxed text-base mt-4">
-              Right now: React on the frontend, Node and MongoDB coming next. Long-term: full-stack,
-              then AI/ML. I'm building in public, shipping real projects, and open to remote roles
-              where I can contribute from day one.
+            <p className="font-body text-[rgba(249,250,251,0.75)] leading-relaxed text-[1.0625rem]">
+              In 2026, I was selected for Stanford's Code in Place program, recognized as a Top Performer in HEC
+              Pakistan's GenAI cohort, accepted into the Dev Weekends Fellowship AI Track, and advanced to Round 2
+              of the USAII Global AI Hackathon out of 324 teams.
             </p>
+            <p className="font-body text-[rgba(249,250,251,0.75)] leading-relaxed text-[1.0625rem]">
+              Right now: React on the frontend, Node.js and MongoDB coming through the Dev Weekends Fellowship.
+              Open to remote roles where I can contribute and grow from day one.
+            </p>
+
+            {/* Status badge */}
+            <div className="flex items-center gap-3 pt-2">
+              <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm border border-brand-green/30 bg-brand-green/10 text-brand-green"
+                style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.75rem' }}
+              >
+                <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
+                Available for Remote Roles
+              </span>
+            </div>
           </div>
 
           {/* Right — Info cards */}
           <motion.div
-            className="lg:col-span-2"
-            variants={cardContainerVariants}
+            className="lg:col-span-2 space-y-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
           >
-            {cards.map(({ icon: Icon, label, value }, i) => (
+            {cards.map(({ icon: Icon, label, value }) => (
               <motion.div
                 key={label}
-                variants={cardVariants}
-                className={`glass border-l-2 border-brand-violet p-4 hover:border-brand-violet-light hover:bg-brand-violet/5 hover:-translate-y-0.5 transition-all duration-200${i > 0 ? ' mt-3' : ''}`}
+                variants={{
+                  hidden: { opacity: 0, x: 20 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+                }}
+                className="glass-hover border-l-2 border-brand-violet p-4"
+                style={{ borderRadius: '12px' }}
               >
                 <div className="flex items-start gap-3">
-                  <Icon size={16} className="text-brand-violet mt-0.5 flex-shrink-0" />
+                  <Icon size={15} className="text-brand-violet mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-mono text-xs text-brand-violet uppercase tracking-wide">
+                    <p className="section-label" style={{ marginBottom: '2px', fontSize: '0.65rem' }}>
                       {label}
                     </p>
-                    <p className="text-sm text-slate-200 mt-0.5">{value}</p>
+                    <p className="font-body text-sm text-[rgba(249,250,251,0.85)]">{value}</p>
                   </div>
                 </div>
               </motion.div>

@@ -1,29 +1,28 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Loader2 } from 'lucide-react'
+import { Mail, Loader2, Send } from 'lucide-react'
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
 import emailjs from 'emailjs-com'
 
-// SETUP: Replace these with your EmailJS credentials from emailjs.com
 const EMAILJS_SERVICE_ID = ''
 const EMAILJS_TEMPLATE_ID = ''
 const EMAILJS_PUBLIC_KEY = ''
 
 const CONTACT_ITEMS = [
   {
-    icon: <Mail size={20} className="text-brand-violet" />,
+    icon: <Mail size={18} className="text-brand-violet" />,
     label: 'Email',
     display: 'kaneezabatoolmemon@gmail.com',
     href: 'mailto:kaneezabatoolmemon@gmail.com',
   },
   {
-    icon: <FaLinkedin size={20} className="text-brand-violet" />,
+    icon: <FaLinkedin size={18} className="text-brand-violet" />,
     label: 'LinkedIn',
     display: 'linkedin.com/in/kaneeza-batool',
     href: 'https://linkedin.com/in/kaneeza-batool',
   },
   {
-    icon: <FaGithub size={20} className="text-brand-violet" />,
+    icon: <FaGithub size={18} className="text-brand-violet" />,
     label: 'GitHub',
     display: 'github.com/kaneeza-batool',
     href: 'https://github.com/kaneeza-batool',
@@ -55,28 +54,17 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault()
     const errs = validate(formData)
-    if (Object.keys(errs).length > 0) {
-      setErrors(errs)
-      return
-    }
+    if (Object.keys(errs).length > 0) { setErrors(errs); return }
     setFormState('loading')
     try {
-      const hasCredentials =
-        EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY
-      if (hasCredentials) {
+      if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
         await emailjs.send(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_TEMPLATE_ID,
-          {
-            name: formData.name,
-            email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-          },
+          EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID,
+          { name: formData.name, email: formData.email, subject: formData.subject, message: formData.message },
           EMAILJS_PUBLIC_KEY
         )
       } else {
-        await new Promise(res => setTimeout(res, 1500))
+        await new Promise(res => setTimeout(res, 1400))
       }
       setFormState('success')
     } catch {
@@ -85,50 +73,80 @@ export default function Contact() {
   }
 
   const inputClass =
-    'bg-brand-secondary/50 border border-brand-violet/20 text-white placeholder:text-slate-500 ' +
-    'focus:border-brand-violet focus:shadow-[0_0_0_3px_rgba(124,58,237,0.15)] focus:outline-none ' +
-    'rounded-xl px-4 py-3 font-body text-sm w-full transition-all'
+    'w-full font-body text-sm text-white placeholder:text-[rgba(249,250,251,0.28)] ' +
+    'rounded-xl px-4 py-3 transition-all outline-none ' +
+    'focus:shadow-[0_0_0_2px_rgba(124,58,237,0.4)]'
+  const inputStyle = {
+    background: 'rgba(26,21,96,0.5)',
+    border: '1px solid rgba(124,58,237,0.2)',
+  }
+  const inputFocusStyle = { borderColor: '#7C3AED' }
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" className="py-28 relative overflow-hidden">
+      <div
+        className="radial-glow"
+        style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.07)', bottom: '0', right: '5%' }}
+      />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs text-brand-violet uppercase tracking-widest mb-3">
-            06 / Contact
-          </p>
-          <h2 className="font-display font-bold text-4xl lg:text-5xl mb-4">
+          <span className="section-label">07 / Contact</span>
+          <h2 className="section-heading mb-3">
             Get <span className="gradient-text">In Touch</span>
           </h2>
-          <p className="text-slate-400 font-body mb-12">
+          <p className="font-body text-[rgba(249,250,251,0.55)] mb-12">
             Have a project in mind or just want to connect? My inbox is open.
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-14">
             {/* LEFT — contact info */}
             <div>
-              <span className="bg-green-900/30 border border-green-500/20 text-green-400 font-mono text-xs px-3 py-2 rounded-full inline-flex items-center gap-2 mb-8">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-10 border border-brand-green/25 text-brand-green"
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.72rem',
+                  background: 'rgba(52,211,153,0.08)',
+                }}
+              >
+                <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
                 Available for Remote Roles
               </span>
 
-              <div>
+              <div className="space-y-5">
                 {CONTACT_ITEMS.map(item => (
                   <a
                     key={item.label}
                     href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 mb-5 hover:-translate-y-0.5 transition-all group"
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="flex items-center gap-4 group hover:-translate-y-0.5 transition-all duration-200"
                   >
-                    <div className="flex-shrink-0">{item.icon}</div>
+                    <div
+                      className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl"
+                      style={{ background: 'rgba(124,58,237,0.1)', border: '1px solid rgba(124,58,237,0.2)' }}
+                    >
+                      {item.icon}
+                    </div>
                     <div>
-                      <p className="font-mono text-xs text-brand-violet uppercase">{item.label}</p>
-                      <p className="text-slate-300 group-hover:text-brand-violet-light text-sm transition-colors">
+                      <p
+                        style={{
+                          fontFamily: 'JetBrains Mono, monospace',
+                          fontSize: '0.65rem',
+                          color: '#A78BFA',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.1em',
+                        }}
+                      >
+                        {item.label}
+                      </p>
+                      <p className="font-body text-sm text-[rgba(249,250,251,0.7)] group-hover:text-brand-violet-light transition-colors">
                         {item.display}
                       </p>
                     </div>
@@ -137,97 +155,119 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* RIGHT — contact form */}
+            {/* RIGHT — form */}
             <form onSubmit={handleSubmit} noValidate>
-              <div className="grid gap-4">
-                {/* Name + Email row */}
+              <div className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                    <label
+                      htmlFor="name"
+                      className="block mb-1.5"
+                      style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'rgba(249,250,251,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                    >
                       Name
                     </label>
                     <input
                       id="name"
                       className={inputClass}
+                      style={inputStyle}
                       type="text"
                       name="name"
                       placeholder="Your name"
                       value={formData.name}
                       onChange={handleChange}
                       disabled={formState === 'loading' || formState === 'success'}
+                      onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
+                      onBlur={e => { e.target.style.borderColor = 'rgba(124,58,237,0.2)' }}
                     />
                     {errors.name && (
-                      <p className="font-mono text-xs text-red-400 mt-1">{errors.name}</p>
+                      <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#F87171', marginTop: '4px' }}>{errors.name}</p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                    <label
+                      htmlFor="email"
+                      className="block mb-1.5"
+                      style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'rgba(249,250,251,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                    >
                       Email
                     </label>
                     <input
                       id="email"
                       className={inputClass}
+                      style={inputStyle}
                       type="email"
                       name="email"
                       placeholder="your@email.com"
                       value={formData.email}
                       onChange={handleChange}
                       disabled={formState === 'loading' || formState === 'success'}
+                      onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
+                      onBlur={e => { e.target.style.borderColor = 'rgba(124,58,237,0.2)' }}
                     />
                     {errors.email && (
-                      <p className="font-mono text-xs text-red-400 mt-1">{errors.email}</p>
+                      <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#F87171', marginTop: '4px' }}>{errors.email}</p>
                     )}
                   </div>
                 </div>
 
-                {/* Subject */}
                 <div>
-                  <label htmlFor="subject" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
-                    Subject <span className="normal-case text-slate-600">(optional)</span>
+                  <label
+                    htmlFor="subject"
+                    className="block mb-1.5"
+                    style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'rgba(249,250,251,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                  >
+                    Subject <span style={{ textTransform: 'none', color: 'rgba(249,250,251,0.2)' }}>(optional)</span>
                   </label>
                   <input
                     id="subject"
                     className={inputClass}
+                    style={inputStyle}
                     type="text"
                     name="subject"
-                    placeholder="Subject (optional)"
+                    placeholder="Subject"
                     value={formData.subject}
                     onChange={handleChange}
                     disabled={formState === 'loading' || formState === 'success'}
+                    onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(124,58,237,0.2)' }}
                   />
-                  {errors.subject && (
-                    <p className="font-mono text-xs text-red-400 mt-1">{errors.subject}</p>
-                  )}
                 </div>
 
-                {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block font-mono text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                  <label
+                    htmlFor="message"
+                    className="block mb-1.5"
+                    style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: 'rgba(249,250,251,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                  >
                     Message
                   </label>
                   <textarea
                     id="message"
                     className={inputClass}
+                    style={inputStyle}
                     name="message"
                     placeholder="Tell me about your project or just say hi..."
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
                     disabled={formState === 'loading' || formState === 'success'}
+                    onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
+                    onBlur={e => { e.target.style.borderColor = 'rgba(124,58,237,0.2)' }}
                   />
                   {errors.message && (
-                    <p className="font-mono text-xs text-red-400 mt-1">{errors.message}</p>
+                    <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#F87171', marginTop: '4px' }}>{errors.message}</p>
                   )}
                 </div>
               </div>
 
-              {/* Submit */}
-              <div className="mt-4">
+              <div className="mt-5">
                 {formState === 'success' ? (
                   <button
                     type="button"
                     disabled
-                    className="w-full bg-green-600 text-white font-bold px-6 py-3 rounded-full opacity-100 cursor-default"
+                    className="w-full py-3 rounded-full font-display font-bold text-sm text-white"
+                    style={{ background: 'linear-gradient(135deg, #059669, #34D399)', fontFamily: 'Space Grotesk, sans-serif' }}
                   >
                     Message Sent ✓
                   </button>
@@ -235,26 +275,24 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={formState === 'loading'}
-                    className="w-full bg-brand-violet text-white font-bold px-6 py-3 rounded-full hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none inline-flex items-center justify-center gap-2"
+                    className="w-full btn-primary justify-center disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                   >
                     {formState === 'loading' ? (
-                      <>
-                        <Loader2 size={16} className="animate-spin" />
-                        Sending...
-                      </>
+                      <><Loader2 size={16} className="animate-spin" />Sending...</>
                     ) : (
-                      'Send Message →'
+                      <><Send size={15} />Send Message</>
                     )}
                   </button>
                 )}
 
                 {formState === 'error' && (
-                  <p className="font-mono text-xs text-red-400 mt-3 text-center">
+                  <p
+                    className="mt-3 text-center"
+                    style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#F87171' }}
+                  >
                     Something went wrong — email me directly at{' '}
-                    <a
-                      href="mailto:kaneezabatoolmemon@gmail.com"
-                      className="underline hover:text-red-300"
-                    >
+                    <a href="mailto:kaneezabatoolmemon@gmail.com" className="underline hover:text-red-300">
                       kaneezabatoolmemon@gmail.com
                     </a>
                   </p>
