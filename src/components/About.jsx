@@ -43,7 +43,7 @@ const cards = [
 
 export default function About() {
   return (
-    <section id="about" className="py-28 relative overflow-hidden">
+    <section id="about" className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
       <div
         className="radial-glow"
         style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.06)', top: '20%', right: '-10%' }}

@@ -86,7 +86,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-28 relative overflow-hidden">
+    <section id="contact" className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
       <div
         className="radial-glow"
         style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.06)', bottom: '0', left: '0', filter: 'blur(120px)' }}

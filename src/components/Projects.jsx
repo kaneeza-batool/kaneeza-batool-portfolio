@@ -37,7 +37,7 @@ export default function Projects() {
   const filteredCount = (showFeatured ? 1 : 0) + otherProjects.length
 
   return (
-    <section id="projects" className="py-28 relative overflow-hidden">
+    <section id="projects" className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
       {/* Centered background blob */}
       <div
         style={{
@@ -167,21 +167,33 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Decorative panel with grid pattern */}
-                  <div
-                    className="relative flex items-center justify-center rounded-xl overflow-hidden min-h-[150px]"
-                    style={{
-                      backgroundColor: 'rgba(26,21,96,0.5)',
-                      border: '1px solid rgba(124,58,237,0.12)',
-                      backgroundImage:
-                        'repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(124,58,237,0.06) 28px, rgba(124,58,237,0.06) 29px), repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(124,58,237,0.06) 28px, rgba(124,58,237,0.06) 29px)',
-                    }}
-                  >
-                    <span
-                      className="relative text-center px-4 font-mono text-sm text-brand-violet/20"
-                    >
-                      dexopk.netlify.app
-                    </span>
+                  {/* Browser mockup frame */}
+                  <div className="flex flex-col rounded-xl overflow-hidden min-h-[240px]" style={{ backgroundColor: '#0D0B1F', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    {/* Browser chrome bar */}
+                    <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10" style={{ backgroundColor: 'rgba(26,21,96,0.6)' }}>
+                      <div className="w-2 h-2 rounded-full bg-red-500" />
+                      <div className="w-2 h-2 rounded-full bg-amber-500" />
+                      <div className="w-2 h-2 rounded-full bg-green-500" />
+                      <div className="flex-1 flex justify-center">
+                        <span className="bg-white/5 rounded-md px-3 py-1 font-mono text-xs text-slate-400">
+                          dexopk.netlify.app
+                        </span>
+                      </div>
+                    </div>
+                    {/* Browser content area */}
+                    <div className="flex-1 p-6 flex flex-col gap-4" style={{ backgroundColor: '#0D0B1F' }}>
+                      {[
+                        'Multi-page e-commerce with product catalog and cart',
+                        'Pakistani payment integration and checkout flow',
+                        'Fully responsive across all screen sizes',
+                        'Deployed and live on Netlify',
+                      ].map((text, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <div className="w-2 h-2 rounded-sm bg-brand-violet flex-shrink-0" style={{ marginTop: '6px' }} />
+                          <span className="text-slate-300 text-sm">{text}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

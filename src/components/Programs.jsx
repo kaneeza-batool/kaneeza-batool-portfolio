@@ -30,8 +30,8 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="py-28 relative overflow-hidden"
-      style={{ backgroundColor: 'rgba(26,21,96,0.15)' }}
+      className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]"
+      style={{ backgroundColor: '#0F0D2A' }}
     >
       <div
         className="radial-glow"

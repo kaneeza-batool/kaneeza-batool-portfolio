@@ -20,46 +20,64 @@ const tabs = [
 ]
 
 const iconMap = {
-  'HTML5':       { icon: FaHtml5,            color: 'text-orange-400' },
-  'CSS3':        { icon: FaCss3Alt,           color: 'text-blue-400' },
-  'Bootstrap 5': { icon: FaBootstrap,         color: 'text-purple-400' },
-  'JavaScript':  { icon: SiJavascript,        color: 'text-yellow-400' },
-  'React':       { icon: FaReact,             color: 'text-cyan-400' },
-  'Redux':       { icon: SiRedux,             color: 'text-purple-500' },
-  'Tailwind CSS':{ icon: SiTailwindcss,       color: 'text-cyan-300' },
-  'Node.js':     { icon: FaNodeJs,            color: 'text-green-400' },
-  'Express.js':  { icon: SiExpress,           color: 'text-slate-300' },
-  'MongoDB':     { icon: SiMongodb,           color: 'text-green-500' },
-  'Java':        { icon: FaJava,              color: 'text-red-400' },
-  'C++':         { icon: SiCplusplus,         color: 'text-blue-500' },
-  'Python':      { icon: FaPython,            color: 'text-yellow-300' },
-  'Git':         { icon: FaGit,              color: 'text-orange-500' },
-  'GitHub':      { icon: FaGithub,            color: 'text-slate-200' },
-  'VS Code':     { icon: VscVscode,            color: 'text-blue-400' },
-  'Notion':      { icon: SiNotion,            color: 'text-slate-200' },
-  'Vercel':      { icon: SiVercel,            color: 'text-slate-200' },
-  'Netlify':     { icon: SiNetlify,           color: 'text-teal-400' },
-  'Arrays':      { icon: Layers,              color: 'text-brand-violet-light' },
-  'Strings':     { icon: Type,               color: 'text-brand-violet-light' },
-  'Simulation':  { icon: Cpu,                color: 'text-brand-violet-light' },
-  'Two Pointers':{ icon: ArrowLeftRight,      color: 'text-amber-400' },
-  'HashMaps':    { icon: Database,            color: 'text-amber-400' },
+  'HTML5':       { icon: FaHtml5,       color: 'text-orange-400', borderColor: 'rgba(251,146,60,0.4)' },
+  'CSS3':        { icon: FaCss3Alt,     color: 'text-blue-400',   borderColor: 'rgba(96,165,250,0.4)' },
+  'Bootstrap 5': { icon: FaBootstrap,   color: 'text-purple-400', borderColor: 'rgba(192,132,252,0.4)' },
+  'JavaScript':  { icon: SiJavascript,  color: 'text-yellow-400', borderColor: 'rgba(250,204,21,0.4)' },
+  'React':       { icon: FaReact,       color: 'text-cyan-400',   borderColor: 'rgba(34,211,238,0.4)' },
+  'Redux':       { icon: SiRedux,       color: 'text-purple-500', borderColor: 'rgba(168,85,247,0.4)' },
+  'Tailwind CSS':{ icon: SiTailwindcss, color: 'text-cyan-300',   borderColor: 'rgba(103,232,249,0.4)' },
+  'Node.js':     { icon: FaNodeJs,      color: 'text-green-400',  borderColor: 'rgba(74,222,128,0.4)' },
+  'Express.js':  { icon: SiExpress,     color: 'text-slate-300',  borderColor: 'rgba(203,213,225,0.4)' },
+  'MongoDB':     { icon: SiMongodb,     color: 'text-green-500',  borderColor: 'rgba(34,197,94,0.4)' },
+  'Java':        { icon: FaJava,        color: 'text-red-400',    borderColor: 'rgba(248,113,113,0.4)' },
+  'C++':         { icon: SiCplusplus,   color: 'text-blue-500',   borderColor: 'rgba(59,130,246,0.4)' },
+  'Python':      { icon: FaPython,      color: 'text-yellow-300', borderColor: 'rgba(253,224,71,0.4)' },
+  'Git':         { icon: FaGit,         color: 'text-orange-500', borderColor: 'rgba(249,115,22,0.4)' },
+  'GitHub':      { icon: FaGithub,      color: 'text-slate-200',  borderColor: 'rgba(226,232,240,0.4)' },
+  'VS Code':     { icon: VscVscode,     color: 'text-blue-400',   borderColor: 'rgba(96,165,250,0.4)' },
+  'Notion':      { icon: SiNotion,      color: 'text-slate-200',  borderColor: 'rgba(226,232,240,0.4)' },
+  'Vercel':      { icon: SiVercel,      color: 'text-slate-200',  borderColor: 'rgba(226,232,240,0.4)' },
+  'Netlify':     { icon: SiNetlify,     color: 'text-teal-400',   borderColor: 'rgba(45,212,191,0.4)' },
+  'Arrays':      { icon: Layers,        color: 'text-brand-violet-light', borderColor: 'rgba(167,139,250,0.4)' },
+  'Strings':     { icon: Type,          color: 'text-brand-violet-light', borderColor: 'rgba(167,139,250,0.4)' },
+  'Simulation':  { icon: Cpu,           color: 'text-brand-violet-light', borderColor: 'rgba(167,139,250,0.4)' },
+  'Two Pointers':{ icon: ArrowLeftRight, color: 'text-amber-400', borderColor: 'rgba(251,191,36,0.4)' },
+  'HashMaps':    { icon: Database,      color: 'text-amber-400',  borderColor: 'rgba(251,191,36,0.4)' },
 }
+
+const CORE_SKILLS = ['HTML5', 'CSS3', 'JavaScript']
+const FRAMEWORK_SKILLS = ['Bootstrap 5', 'React', 'Redux', 'Tailwind CSS']
 
 function SkillBadge({ skill, index }) {
   const iconData = iconMap[skill.name]
   const IconComponent = iconData?.icon
+  const pct = skill.percentage ?? 0
+  const padding = pct >= 85 ? 'p-6' : pct >= 70 ? 'p-5' : 'p-4'
+  const iconSize = pct >= 85 ? 40 : pct >= 70 ? 32 : 24
+  const bottomBorderColor = iconData?.borderColor ?? 'rgba(255,255,255,0.1)'
+
+  const badgeStyle = skill.inProgress
+    ? {
+        background: 'rgba(120,53,15,0.1)',
+        borderTop: '1px solid rgba(245,158,11,0.2)',
+        borderLeft: '1px solid rgba(245,158,11,0.2)',
+        borderRight: '1px solid rgba(245,158,11,0.2)',
+        borderBottom: `2px solid ${bottomBorderColor}`,
+      }
+    : { borderBottom: `2px solid ${bottomBorderColor}` }
 
   return (
     <motion.div
-      className="glass rounded-2xl p-5 flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-[0_8px_24px_rgba(124,58,237,0.15)]"
+      className={`glass rounded-2xl ${padding} flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-[0_8px_24px_rgba(124,58,237,0.15)]`}
+      style={badgeStyle}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: 'easeOut', delay: index * 0.055 }}
     >
-      <div style={{ width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        {IconComponent && <IconComponent size={32} className={iconData.color} />}
+      <div style={{ width: iconSize + 16, height: iconSize + 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {IconComponent && <IconComponent size={iconSize} className={iconData.color} />}
       </div>
       <span
         className="font-display font-semibold text-sm text-white text-center"
@@ -84,7 +102,7 @@ export default function Skills() {
   const activeSkills = skills[activeTab] ?? []
 
   return (
-    <section id="skills" className="py-28 relative overflow-hidden" style={{ background: 'rgba(26,21,96,0.12)' }}>
+    <section id="skills" className="py-28 relative overflow-hidden" style={{ backgroundColor: '#0D0B1F' }}>
       <div
         className="radial-glow"
         style={{ width: '400px', height: '400px', background: 'rgba(124,58,237,0.07)', top: '10%', left: '-5%' }}
@@ -151,11 +169,33 @@ export default function Skills() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22 }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
             >
-              {activeSkills.map((skill, index) => (
-                <SkillBadge key={skill.name} skill={skill} index={index} />
-              ))}
+              {activeTab === 'frontend' ? (
+                <>
+                  <p className="font-mono text-xs text-slate-500 uppercase tracking-widest mb-3">Core</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-2">
+                    {activeSkills
+                      .filter(s => CORE_SKILLS.includes(s.name))
+                      .map((skill, i) => (
+                        <SkillBadge key={skill.name} skill={skill} index={i} />
+                      ))}
+                  </div>
+                  <p className="font-mono text-xs text-slate-500 uppercase tracking-widest mb-3 mt-6">Frameworks</p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    {activeSkills
+                      .filter(s => FRAMEWORK_SKILLS.includes(s.name))
+                      .map((skill, i) => (
+                        <SkillBadge key={skill.name} skill={skill} index={i + CORE_SKILLS.length} />
+                      ))}
+                  </div>
+                </>
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {activeSkills.map((skill, index) => (
+                    <SkillBadge key={skill.name} skill={skill} index={index} />
+                  ))}
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
         </motion.div>
