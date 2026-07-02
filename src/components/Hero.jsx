@@ -132,7 +132,7 @@ export default function Hero() {
           {/* Name */}
           <motion.h1
             variants={prefersReducedMotion ? {} : itemVariants}
-            className="font-display font-bold gradient-text leading-[1.05] text-6xl lg:text-8xl"
+            className="font-display font-bold gradient-text leading-[1.05] text-4xl md:text-5xl lg:text-6xl whitespace-nowrap"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
             Kaneeza Batool

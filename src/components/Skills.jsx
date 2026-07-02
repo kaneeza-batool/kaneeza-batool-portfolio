@@ -1,6 +1,14 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { AlertTriangle } from 'lucide-react'
+import { AlertTriangle, Layers, Type, Cpu, ArrowLeftRight, Database } from 'lucide-react'
+import {
+  FaHtml5, FaCss3Alt, FaBootstrap, FaReact, FaNodeJs, FaJava, FaGit, FaGithub, FaPython,
+} from 'react-icons/fa'
+import {
+  SiJavascript, SiRedux, SiTailwindcss, SiExpress, SiMongodb, SiCplusplus,
+  SiNotion, SiVercel, SiNetlify,
+} from 'react-icons/si'
+import { VscVscode } from 'react-icons/vsc'
 import { skills } from '../data/skills.js'
 
 const tabs = [
@@ -11,60 +19,62 @@ const tabs = [
   { key: 'dsa', label: 'DSA' },
 ]
 
+const iconMap = {
+  'HTML5':       { icon: FaHtml5,            color: 'text-orange-400' },
+  'CSS3':        { icon: FaCss3Alt,           color: 'text-blue-400' },
+  'Bootstrap 5': { icon: FaBootstrap,         color: 'text-purple-400' },
+  'JavaScript':  { icon: SiJavascript,        color: 'text-yellow-400' },
+  'React':       { icon: FaReact,             color: 'text-cyan-400' },
+  'Redux':       { icon: SiRedux,             color: 'text-purple-500' },
+  'Tailwind CSS':{ icon: SiTailwindcss,       color: 'text-cyan-300' },
+  'Node.js':     { icon: FaNodeJs,            color: 'text-green-400' },
+  'Express.js':  { icon: SiExpress,           color: 'text-slate-300' },
+  'MongoDB':     { icon: SiMongodb,           color: 'text-green-500' },
+  'Java':        { icon: FaJava,              color: 'text-red-400' },
+  'C++':         { icon: SiCplusplus,         color: 'text-blue-500' },
+  'Python':      { icon: FaPython,            color: 'text-yellow-300' },
+  'Git':         { icon: FaGit,              color: 'text-orange-500' },
+  'GitHub':      { icon: FaGithub,            color: 'text-slate-200' },
+  'VS Code':     { icon: VscVscode,            color: 'text-blue-400' },
+  'Notion':      { icon: SiNotion,            color: 'text-slate-200' },
+  'Vercel':      { icon: SiVercel,            color: 'text-slate-200' },
+  'Netlify':     { icon: SiNetlify,           color: 'text-teal-400' },
+  'Arrays':      { icon: Layers,              color: 'text-brand-violet-light' },
+  'Strings':     { icon: Type,               color: 'text-brand-violet-light' },
+  'Simulation':  { icon: Cpu,                color: 'text-brand-violet-light' },
+  'Two Pointers':{ icon: ArrowLeftRight,      color: 'text-amber-400' },
+  'HashMaps':    { icon: Database,            color: 'text-amber-400' },
+}
+
 function SkillBadge({ skill, index }) {
-  const isAmber = skill.inProgress
+  const iconData = iconMap[skill.name]
+  const IconComponent = iconData?.icon
 
   return (
     <motion.div
-      key={skill.name}
-      className="rounded-2xl p-5 border border-white/[0.08] transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-[0_8px_32px_rgba(124,58,237,0.12)]"
-      style={{ background: 'rgba(255,255,255,0.03)' }}
+      className="glass rounded-2xl p-5 flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-[0_8px_24px_rgba(124,58,237,0.15)]"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, ease: 'easeOut', delay: index * 0.055 }}
-      whileHover={{ background: 'rgba(124,58,237,0.05)' }}
     >
-      <div className="flex justify-between items-center mb-3">
-        <div className="flex items-center gap-2">
-          <span
-            className="font-display font-semibold text-sm text-white"
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-          >
-            {skill.name}
-          </span>
-          {isAmber && (
-            <span
-              className="italic border border-amber-500/30 bg-amber-900/20 text-amber-400/90 rounded-full px-3 py-0.5"
-              style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.6rem' }}
-            >
-              IN PROGRESS
-            </span>
-          )}
-        </div>
+      <div style={{ width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {IconComponent && <IconComponent size={32} className={iconData.color} />}
+      </div>
+      <span
+        className="font-display font-semibold text-sm text-white text-center"
+        style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+      >
+        {skill.name}
+      </span>
+      {skill.inProgress && (
         <span
-          className={`font-mono text-sm ${isAmber ? 'text-brand-amber' : 'text-brand-violet-light'}`}
+          className="font-mono text-xs text-amber-400 italic"
           style={{ fontFamily: 'JetBrains Mono, monospace' }}
         >
-          {skill.percentage}%
+          In Progress
         </span>
-      </div>
-
-      <div className="w-full h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.07)' }}>
-        <motion.div
-          className="h-full rounded-full"
-          style={{
-            background: isAmber
-              ? 'linear-gradient(90deg, #F59E0B, #FBBF24)'
-              : 'linear-gradient(90deg, #7C3AED, #A78BFA)',
-            filter: isAmber ? undefined : 'drop-shadow(0 0 4px rgba(124,58,237,0.6))',
-          }}
-          initial={{ width: '0%' }}
-          whileInView={{ width: `${skill.percentage}%` }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94], delay: index * 0.04 }}
-        />
-      </div>
+      )}
     </motion.div>
   )
 }
@@ -129,7 +139,7 @@ export default function Skills() {
                   color: 'rgba(251,191,36,0.8)',
                 }}
               >
-                Currently learning - percentages reflect progress, not mastery targets.
+                Currently learning - these are works in progress, not mastered skills.
               </span>
             </div>
           )}
@@ -141,7 +151,7 @@ export default function Skills() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
             >
               {activeSkills.map((skill, index) => (
                 <SkillBadge key={skill.name} skill={skill} index={index} />

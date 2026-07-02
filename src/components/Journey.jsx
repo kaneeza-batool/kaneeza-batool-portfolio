@@ -33,134 +33,71 @@ export default function Journey() {
           </h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Vertical line desktop */}
+        <div className="relative max-w-3xl mx-auto">
+          {/* Vertical line on the left */}
           <div
-            className="hidden md:block absolute top-0 h-full"
             style={{
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '2px',
-              background: 'linear-gradient(to bottom, #7C3AED 0%, rgba(124,58,237,0.6) 60%, rgba(124,58,237,0.05) 100%)',
-              filter: 'drop-shadow(0 0 4px rgba(124,58,237,0.4))',
-            }}
-          />
-          {/* Vertical line mobile */}
-          <div
-            className="block md:hidden absolute top-0 h-full"
-            style={{
+              position: 'absolute',
               left: '20px',
+              top: 0,
+              bottom: 0,
               width: '2px',
-              background: 'linear-gradient(to bottom, #7C3AED 0%, rgba(124,58,237,0.4) 100%)',
+              background: 'linear-gradient(to bottom, #7C3AED, rgba(124,58,237,0.1))',
               filter: 'drop-shadow(0 0 4px rgba(124,58,237,0.4))',
             }}
           />
 
           {journey.map((item, index) => (
-            <div key={item.id} className="relative mb-8 md:mb-10">
-              {/* Center dot desktop */}
+            <div key={item.id} className="relative pl-16 mb-10">
+              {/* Dot */}
               <div
-                className="hidden md:flex absolute z-10 items-center justify-center rounded-full"
                 style={{
-                  left: '50%',
-                  top: '28px',
-                  transform: 'translate(-50%, 0)',
+                  position: 'absolute',
+                  left: '12px',
+                  top: '24px',
                   width: '16px',
                   height: '16px',
+                  borderRadius: '9999px',
                   background: 'rgba(124,58,237,0.2)',
                   border: '2px solid #7C3AED',
                   boxShadow: '0 0 12px rgba(124,58,237,0.6)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}
               >
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#7C3AED' }} />
               </div>
-              {/* Mobile dot */}
-              <div
-                className="flex md:hidden absolute z-10 items-center justify-center rounded-full"
-                style={{
-                  left: '13px',
-                  top: '28px',
-                  width: '14px',
-                  height: '14px',
-                  background: 'rgba(124,58,237,0.2)',
-                  border: '2px solid #7C3AED',
-                  boxShadow: '0 0 12px rgba(124,58,237,0.6)',
-                }}
-              >
-                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7C3AED' }} />
-              </div>
 
-              {/* Mobile content */}
+              {/* Content card */}
               <motion.div
-                className="block md:hidden pl-12"
-                initial={{ opacity: 0, x: -24 }}
+                className="rounded-2xl p-6 border border-white/[0.08] transition-all duration-300 hover:border-brand-violet/30 hover:shadow-[0_8px_24px_rgba(124,58,237,0.1)] hover:-translate-y-1"
+                style={{ background: 'rgba(255,255,255,0.03)' }}
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: Math.min(index * 0.06, 0.3) }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
               >
-                <JourneyCard item={item} />
+                <span
+                  className="inline-block mb-3 px-3 py-1 rounded-full text-brand-violet-light text-xs bg-brand-violet/15 border border-brand-violet/25"
+                  style={{ fontFamily: 'JetBrains Mono, monospace' }}
+                >
+                  {item.year}
+                </span>
+                <p
+                  className="font-display font-semibold text-base text-white mb-2"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                >
+                  {item.title}
+                </p>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
-
-              {/* Desktop alternating layout */}
-              <div className="hidden md:grid grid-cols-2 gap-8">
-                {item.side === 'left' ? (
-                  <>
-                    <motion.div
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, ease: 'easeOut', delay: Math.min(index * 0.06, 0.3) }}
-                      viewport={{ once: true }}
-                    >
-                      <JourneyCard item={item} align="right" />
-                    </motion.div>
-                    <div />
-                  </>
-                ) : (
-                  <>
-                    <div />
-                    <motion.div
-                      initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, ease: 'easeOut', delay: Math.min(index * 0.06, 0.3) }}
-                      viewport={{ once: true }}
-                    >
-                      <JourneyCard item={item} />
-                    </motion.div>
-                  </>
-                )}
-              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
-}
-
-function JourneyCard({ item, align }) {
-  return (
-    <div
-      className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/30 hover:shadow-[0_8px_24px_rgba(124,58,237,0.1)] border border-white/[0.08]"
-      style={{
-        background: 'rgba(255,255,255,0.03)',
-        ...(align === 'right' ? { textAlign: 'right' } : {}),
-      }}
-    >
-      <span
-        className="inline-block mb-3 px-3 py-1 rounded-full text-brand-violet-light text-xs bg-brand-violet/15 border border-brand-violet/25"
-        style={{ fontFamily: 'JetBrains Mono, monospace' }}
-      >
-        {item.year}
-      </span>
-      <p
-        className="font-display font-semibold text-base text-white mb-2"
-        style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-      >
-        {item.title}
-      </p>
-      <p className="text-slate-400 text-sm leading-relaxed">
-        {item.description}
-      </p>
-    </div>
   )
 }
