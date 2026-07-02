@@ -43,7 +43,7 @@ const cards = [
 
 export default function About() {
   return (
-    <section id="about" className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
+    <section id="about" className="py-32 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
       <div
         className="radial-glow"
         style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.06)', top: '20%', right: '-10%' }}
@@ -62,11 +62,11 @@ export default function About() {
         transition={{ duration: 0.65 }}
         viewport={{ once: true, amount: 0.15 }}
       >
-        <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+        <p className="font-mono tracking-[0.3em] uppercase text-sm text-brand-violet mb-3">
           <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
           01 / About
         </p>
-        <h2 className="section-heading text-4xl lg:text-5xl mb-14">
+        <h2 className="section-heading text-5xl lg:text-6xl mb-16">
           About <span className="gradient-text">Me</span>
         </h2>
 
@@ -97,7 +97,7 @@ export default function About() {
 
           {/* Right - Info cards */}
           <motion.div
-            className="lg:col-span-2 space-y-3"
+            className="lg:col-span-2 space-y-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -110,9 +110,9 @@ export default function About() {
                   hidden: { opacity: 0, x: 20 },
                   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
                 }}
-                className="backdrop-blur-xl rounded-2xl p-5 border border-brand-violet/25 transition-all duration-300 hover:border-brand-violet/50 hover:shadow-[0_8px_32px_rgba(124,58,237,0.15)]"
-                style={{ background: 'rgba(124,58,237,0.06)' }}
-                whileHover={{ background: 'rgba(124,58,237,0.1)' }}
+                className="backdrop-blur-xl rounded-3xl p-7 border border-brand-violet/25 transition-all duration-300 hover:border-brand-violet/50 hover:shadow-[0_8px_32px_rgba(124,58,237,0.15)] hover:-translate-y-2"
+                style={{ background: 'rgba(124,58,237,0.06)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)' }}
+                whileHover={{ backgroundColor: 'rgba(124,58,237,0.1)' }}
               >
                 <div className="flex items-start gap-3">
                   <span className="bg-brand-violet/15 rounded-lg p-2 flex-shrink-0">

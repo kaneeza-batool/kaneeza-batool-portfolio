@@ -37,7 +37,7 @@ export default function Projects() {
   const filteredCount = (showFeatured ? 1 : 0) + otherProjects.length
 
   return (
-    <section id="projects" className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
+    <section id="projects" className="py-32 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
       {/* Centered background blob */}
       <div
         style={{
@@ -62,13 +62,16 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+          <p className="font-mono tracking-[0.3em] uppercase text-sm text-brand-violet mb-3">
             <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
             03 / Projects
           </p>
-          <h2 className="section-heading text-4xl lg:text-5xl mb-8">
+          <h2 className="section-heading text-5xl lg:text-6xl">
             Featured <span className="gradient-text">Projects</span>
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center mt-4 mb-10">
+            Things I have built, shipped, and learned from
+          </p>
 
           {/* Filter tabs - glass pill container */}
           <div className="glass rounded-2xl p-1.5 inline-flex flex-wrap gap-1 mb-4">
@@ -100,10 +103,11 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16, transition: { duration: 0.18 } }}
               transition={{ duration: 0.35 }}
-              className="mb-8 overflow-hidden rounded-2xl"
+              className="mb-8 overflow-hidden rounded-3xl"
               style={{
                 backgroundColor: 'rgba(255,255,255,0.02)',
                 border: '1px solid rgba(124,58,237,0.3)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
               }}
             >
               {/* Top accent bar */}
@@ -111,7 +115,7 @@ export default function Projects() {
                 className="h-1 w-full"
                 style={{ background: 'linear-gradient(90deg, #7C3AED, #A78BFA, #7C3AED)' }}
               />
-              <div className="p-8">
+              <div className="p-10">
                 {/* Featured label - top left */}
                 <div className="flex items-center gap-1.5 mb-6">
                   <Star size={11} className="text-brand-violet-light" />
@@ -120,10 +124,10 @@ export default function Projects() {
                   </span>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-10">
+                <div className="grid lg:grid-cols-2 gap-12">
                   <div>
                     <h3
-                      className="font-display font-black text-3xl text-white mb-3"
+                      className="font-display font-black text-4xl text-white mb-3"
                       style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                     >
                       {featuredProject.title}
@@ -202,13 +206,13 @@ export default function Projects() {
         </AnimatePresence>
 
         {/* Project grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
             {otherProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="flex flex-col rounded-2xl p-6 border border-white/8 hover:border-brand-violet/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(124,58,237,0.18)]"
-                style={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
+                className="flex flex-col rounded-3xl p-7 border border-white/8 hover:border-brand-violet/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_32px_rgba(124,58,237,0.18)]"
+                style={{ backgroundColor: 'rgba(255,255,255,0.03)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

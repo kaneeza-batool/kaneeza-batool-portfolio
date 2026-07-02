@@ -73,20 +73,11 @@ export default function Contact() {
   }
 
   const inputClass =
-    'w-full font-body text-sm text-white placeholder:text-[rgba(249,250,251,0.28)] ' +
-    'rounded-xl px-4 py-3 transition-all outline-none ' +
-    'focus:shadow-[inset_0_0_0_1px_rgba(124,58,237,0.3)]'
-  const inputStyle = {
-    background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.1)',
-  }
-  const inputFocusStyle = {
-    borderColor: '#7C3AED',
-    boxShadow: 'inset 0 0 0 1px rgba(124,58,237,0.3)',
-  }
+    'w-full font-body text-sm text-white placeholder:text-[rgba(249,250,251,0.3)] ' +
+    'rounded-xl px-4 py-3 contact-input'
 
   return (
-    <section id="contact" className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
+    <section id="contact" className="py-32 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]">
       <div
         className="radial-glow"
         style={{ width: '500px', height: '500px', background: 'rgba(124,58,237,0.06)', bottom: '0', left: '0', filter: 'blur(120px)' }}
@@ -99,15 +90,15 @@ export default function Contact() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+          <p className="font-mono tracking-[0.3em] uppercase text-sm text-brand-violet mb-3">
             <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
             07 / Contact
           </p>
-          <h2 className="section-heading text-4xl lg:text-5xl mb-3">
+          <h2 className="section-heading text-5xl lg:text-6xl">
             Get <span className="gradient-text">In Touch</span>
           </h2>
-          <p className="font-body text-[rgba(249,250,251,0.55)] mb-12">
-            Have a project in mind or just want to connect? My inbox is open.
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center mt-4 mb-16">
+            Open to remote roles, collaborations, and opportunities
           </p>
 
           <div className="grid lg:grid-cols-2 gap-14">
@@ -192,15 +183,12 @@ export default function Contact() {
                           <input
                             id="name"
                             className={inputClass}
-                            style={inputStyle}
                             type="text"
                             name="name"
                             placeholder="Your name"
                             value={formData.name}
                             onChange={handleChange}
                             disabled={formState === 'loading'}
-                            onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
-                            onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.boxShadow = '' }}
                           />
                           {errors.name && (
                             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#F87171', marginTop: '4px' }}>{errors.name}</p>
@@ -213,15 +201,12 @@ export default function Contact() {
                           <input
                             id="email"
                             className={inputClass}
-                            style={inputStyle}
                             type="email"
                             name="email"
                             placeholder="your@email.com"
                             value={formData.email}
                             onChange={handleChange}
                             disabled={formState === 'loading'}
-                            onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
-                            onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.boxShadow = '' }}
                           />
                           {errors.email && (
                             <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#F87171', marginTop: '4px' }}>{errors.email}</p>
@@ -236,15 +221,12 @@ export default function Contact() {
                         <input
                           id="subject"
                           className={inputClass}
-                          style={inputStyle}
                           type="text"
                           name="subject"
                           placeholder="Subject"
                           value={formData.subject}
                           onChange={handleChange}
                           disabled={formState === 'loading'}
-                          onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
-                          onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.boxShadow = '' }}
                         />
                       </div>
 
@@ -254,16 +236,13 @@ export default function Contact() {
                         </label>
                         <textarea
                           id="message"
-                          className={inputClass}
-                          style={inputStyle}
+                          className={`${inputClass} resize-none`}
                           name="message"
                           placeholder="Tell me about your project or just say hi..."
                           rows={5}
                           value={formData.message}
                           onChange={handleChange}
                           disabled={formState === 'loading'}
-                          onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
-                          onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.boxShadow = '' }}
                         />
                         {errors.message && (
                           <p style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.65rem', color: '#F87171', marginTop: '4px' }}>{errors.message}</p>

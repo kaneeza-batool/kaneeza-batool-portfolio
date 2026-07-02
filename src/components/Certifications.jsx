@@ -51,7 +51,7 @@ function getIssuerIcon(issuer) {
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-28 relative overflow-hidden">
+    <section id="certifications" className="py-32 relative overflow-hidden">
       <div
         className="radial-glow"
         style={{ width: '500px', height: '500px', background: 'rgba(96,165,250,0.05)', top: '10%', right: '-5%' }}
@@ -64,16 +64,19 @@ export default function Certifications() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+          <p className="font-mono tracking-[0.3em] uppercase text-sm text-brand-violet mb-3">
             <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
             05 / Certifications
           </p>
-          <h2 className="section-heading text-4xl lg:text-5xl mb-12">
+          <h2 className="section-heading text-5xl lg:text-6xl">
             Licenses &amp; <span className="gradient-text">Certifications</span>
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center mt-4 mb-16">
+            Verified credentials from recognized organizations
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-start">
           {certifications.map((cert, index) => {
             const iconKey = getIssuerIcon(cert.issuer)
             const accentColor = issuerColors[iconKey] || '#A78BFA'
@@ -81,7 +84,7 @@ export default function Certifications() {
             return (
               <motion.div
                 key={cert.id}
-                className="glass-hover p-6 flex flex-col w-full"
+                className="glass-hover rounded-3xl p-7 flex flex-col w-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

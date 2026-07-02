@@ -3,7 +3,7 @@ import { journey } from '../data/journey'
 
 export default function Journey() {
   return (
-    <section id="journey" className="py-28 relative overflow-hidden" style={{ background: 'rgba(26,21,96,0.1)' }}>
+    <section id="journey" className="py-32 relative overflow-hidden" style={{ background: '#0D0B1F' }}>
       <div
         className="radial-glow"
         style={{
@@ -24,13 +24,16 @@ export default function Journey() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+          <p className="font-mono tracking-[0.3em] uppercase text-sm text-brand-violet mb-3">
             <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
             06 / Journey
           </p>
-          <h2 className="section-heading text-4xl lg:text-5xl mb-16">
+          <h2 className="section-heading text-5xl lg:text-6xl">
             My <span className="gradient-text">Journey</span>
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center mt-4 mb-16">
+            How I got here, in order
+          </p>
         </motion.div>
 
         <div className="relative max-w-3xl mx-auto">
@@ -71,8 +74,8 @@ export default function Journey() {
 
               {/* Content card */}
               <motion.div
-                className="rounded-2xl p-6 border border-white/[0.08] transition-all duration-300 hover:border-brand-violet/30 hover:shadow-[0_8px_24px_rgba(124,58,237,0.1)] hover:-translate-y-1"
-                style={{ background: 'rgba(255,255,255,0.03)' }}
+                className="rounded-3xl p-7 border border-white/[0.08] transition-all duration-300 hover:border-brand-violet/30 hover:shadow-[0_8px_24px_rgba(124,58,237,0.1)] hover:-translate-y-2"
+                style={{ background: 'rgba(255,255,255,0.03)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)' }}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}

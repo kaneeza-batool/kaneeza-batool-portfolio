@@ -5,12 +5,15 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-gradient-to-b from-transparent to-brand-secondary/30">
       <div className="h-px bg-gradient-to-r from-transparent via-brand-violet/40 to-transparent border-0 mb-16" />
 
-      <div className="flex flex-col items-center gap-5 py-12">
+      <div className="flex flex-col items-center gap-5 py-16">
         <p
           className="font-display font-bold text-2xl text-white"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}
         >
           Kaneeza<span className="text-brand-violet">.</span>
+        </p>
+        <p className="text-slate-400 text-sm font-body mt-2 mb-6">
+          Frontend Developer based in Sukkur, Pakistan. Open to remote work.
         </p>
 
         <div className="glass rounded-full px-6 py-3 inline-flex gap-6">

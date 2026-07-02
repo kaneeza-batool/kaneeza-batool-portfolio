@@ -107,7 +107,7 @@ export default function Hero() {
           variants={prefersReducedMotion ? {} : containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-6"
+          className="flex flex-col gap-8"
         >
           {/* Greeting with pulsing dot */}
           <motion.p
@@ -139,7 +139,7 @@ export default function Hero() {
           </motion.h1>
 
           {/* Typewriter pill */}
-          <motion.div variants={prefersReducedMotion ? {} : itemVariants}>
+          <motion.div variants={prefersReducedMotion ? {} : itemVariants} className="mt-2 mb-6">
             <div
               className="inline-flex items-center gap-1 rounded-full px-4 py-2"
               style={{
@@ -164,7 +164,7 @@ export default function Hero() {
 
           {/* Stats - glass card wrapper */}
           <motion.div variants={prefersReducedMotion ? {} : itemVariants}>
-            <div className="glass px-6 py-4 rounded-2xl">
+            <div className="glass px-8 py-5 rounded-3xl">
               <div className="flex flex-wrap items-center gap-5">
                 {statItems.map((stat, i) => (
                   <div key={stat.sub} className="flex items-center gap-5">
@@ -321,21 +321,6 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Badge - HEC Top Performer */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '20%',
-                right: '-64px',
-                animation: prefersReducedMotion ? 'none' : 'bob 3.2s ease-in-out infinite alternate',
-                zIndex: 20,
-              }}
-              className="glass px-3 py-2 rounded-xl whitespace-nowrap"
-            >
-              <span className="font-mono" style={{ fontSize: '0.7rem', color: '#FBBF24' }}>
-                HEC Top Performer
-              </span>
-            </div>
           </div>
         </motion.div>
       </div>

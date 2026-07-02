@@ -49,12 +49,11 @@ const iconMap = {
 const CORE_SKILLS = ['HTML5', 'CSS3', 'JavaScript']
 const FRAMEWORK_SKILLS = ['Bootstrap 5', 'React', 'Redux', 'Tailwind CSS']
 
-function SkillBadge({ skill, index }) {
+function SkillBadge({ skill, index, size = 'small' }) {
   const iconData = iconMap[skill.name]
   const IconComponent = iconData?.icon
-  const pct = skill.percentage ?? 0
-  const padding = pct >= 85 ? 'p-6' : pct >= 70 ? 'p-5' : 'p-4'
-  const iconSize = pct >= 85 ? 40 : pct >= 70 ? 32 : 24
+  const padding = size === 'large' ? 'p-7' : size === 'normal' ? 'p-6' : 'p-5'
+  const iconSize = 32
   const bottomBorderColor = iconData?.borderColor ?? 'rgba(255,255,255,0.1)'
 
   const badgeStyle = skill.inProgress
@@ -69,7 +68,7 @@ function SkillBadge({ skill, index }) {
 
   return (
     <motion.div
-      className={`glass rounded-2xl ${padding} flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-[0_8px_24px_rgba(124,58,237,0.15)]`}
+      className={`glass rounded-3xl ${padding} flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-2 hover:border-brand-violet/40 hover:shadow-[0_8px_24px_rgba(124,58,237,0.15)]`}
       style={badgeStyle}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +79,7 @@ function SkillBadge({ skill, index }) {
         {IconComponent && <IconComponent size={iconSize} className={iconData.color} />}
       </div>
       <span
-        className="font-display font-semibold text-sm text-white text-center"
+        className="font-display font-medium text-sm text-white text-center"
         style={{ fontFamily: 'Space Grotesk, sans-serif' }}
       >
         {skill.name}
@@ -102,7 +101,7 @@ export default function Skills() {
   const activeSkills = skills[activeTab] ?? []
 
   return (
-    <section id="skills" className="py-28 relative overflow-hidden" style={{ backgroundColor: '#0D0B1F' }}>
+    <section id="skills" className="py-32 relative overflow-hidden" style={{ backgroundColor: '#0D0B1F' }}>
       <div
         className="radial-glow"
         style={{ width: '400px', height: '400px', background: 'rgba(124,58,237,0.07)', top: '10%', left: '-5%' }}
@@ -115,16 +114,19 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+          <p className="font-mono tracking-[0.3em] uppercase text-sm text-brand-violet mb-3">
             <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
             02 / Skills
           </p>
-          <h2 className="section-heading text-4xl lg:text-5xl mb-10">
+          <h2 className="section-heading text-5xl lg:text-6xl">
             Technical <span className="gradient-text">Skills</span>
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center mt-4 mb-12">
+            Technologies I work with and am currently learning
+          </p>
 
           {/* Tab switcher */}
-          <div className="glass rounded-2xl p-1.5 inline-flex gap-1 mb-4">
+          <div className="glass rounded-2xl p-1.5 inline-flex flex-wrap gap-1 mb-4">
             {tabs.map(({ key, label }) => (
               <button
                 key={key}
@@ -173,24 +175,24 @@ export default function Skills() {
               {activeTab === 'frontend' ? (
                 <>
                   <p className="font-mono text-xs text-slate-500 uppercase tracking-widest mb-3">Core</p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 mb-2">
                     {activeSkills
                       .filter(s => CORE_SKILLS.includes(s.name))
                       .map((skill, i) => (
-                        <SkillBadge key={skill.name} skill={skill} index={i} />
+                        <SkillBadge key={skill.name} skill={skill} index={i} size="large" />
                       ))}
                   </div>
                   <p className="font-mono text-xs text-slate-500 uppercase tracking-widest mb-3 mt-6">Frameworks</p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
                     {activeSkills
                       .filter(s => FRAMEWORK_SKILLS.includes(s.name))
                       .map((skill, i) => (
-                        <SkillBadge key={skill.name} skill={skill} index={i + CORE_SKILLS.length} />
+                        <SkillBadge key={skill.name} skill={skill} index={i + CORE_SKILLS.length} size="normal" />
                       ))}
                   </div>
                 </>
               ) : (
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
                   {activeSkills.map((skill, index) => (
                     <SkillBadge key={skill.name} skill={skill} index={index} />
                   ))}

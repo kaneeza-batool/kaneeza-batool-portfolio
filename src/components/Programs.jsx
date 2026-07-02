@@ -30,7 +30,7 @@ export default function Programs() {
   return (
     <section
       id="programs"
-      className="py-28 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]"
+      className="py-32 relative overflow-hidden bg-[#0F0D2A] border-t border-b border-white/[0.04]"
       style={{ backgroundColor: '#0F0D2A' }}
     >
       <div
@@ -45,19 +45,22 @@ export default function Programs() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+          <p className="font-mono tracking-[0.3em] uppercase text-sm text-brand-violet mb-3">
             <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
             04 / Programs
           </p>
-          <h2 className="section-heading text-4xl lg:text-5xl mb-4">
+          <h2 className="section-heading text-5xl lg:text-6xl">
             Programs &amp; <span className="gradient-text">Achievements</span>
           </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto text-center mt-4 mb-8">
+            Programs, fellowships, and competitions I have been part of
+          </p>
           <p className="font-mono text-xs text-slate-500 mb-12">
             {programs.length} programs and counting
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {programs.map((program, index) => {
             const accentColor = borderColorMap[program.status] || '#7C3AED'
             const statusConf = statusConfig[program.status]
@@ -65,13 +68,14 @@ export default function Programs() {
             return (
               <motion.div
                 key={program.id}
-                className="flex flex-col rounded-2xl p-6 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(124,58,237,0.15)]"
+                className="flex flex-col rounded-3xl p-7 relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_32px_rgba(124,58,237,0.15)]"
                 style={{
                   backgroundColor: 'rgba(255,255,255,0.03)',
                   borderTop: '1px solid rgba(255,255,255,0.08)',
                   borderRight: '1px solid rgba(255,255,255,0.08)',
                   borderBottom: '1px solid rgba(255,255,255,0.08)',
                   borderLeft: `4px solid ${accentColor}`,
+                  boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
                 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
