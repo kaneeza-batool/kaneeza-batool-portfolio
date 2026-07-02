@@ -2,21 +2,18 @@ import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden">
-      <div
-        className="h-px w-full"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.5), rgba(167,139,250,0.3), rgba(124,58,237,0.5), transparent)' }}
-      />
+    <footer className="relative overflow-hidden bg-gradient-to-b from-transparent to-brand-secondary/30">
+      <div className="h-px bg-gradient-to-r from-transparent via-brand-violet/40 to-transparent border-0 mb-16" />
 
       <div className="flex flex-col items-center gap-5 py-12">
         <p
-          className="font-display font-bold text-xl text-white"
+          className="font-display font-bold text-2xl text-white"
           style={{ fontFamily: 'Space Grotesk, sans-serif' }}
         >
           Kaneeza<span className="text-brand-violet">.</span>
         </p>
 
-        <div className="flex gap-5">
+        <div className="glass rounded-full px-6 py-3 inline-flex gap-6">
           {[
             { href: 'https://github.com/kaneeza-batool', icon: <FaGithub />, label: 'GitHub' },
             { href: 'https://linkedin.com/in/kaneeza-batool', icon: <FaLinkedin />, label: 'LinkedIn' },
@@ -28,22 +25,19 @@ export default function Footer() {
               target={href.startsWith('http') ? '_blank' : undefined}
               rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               aria-label={label}
-              className="text-lg text-[rgba(249,250,251,0.3)] hover:text-brand-violet-light hover:scale-110 transition-all duration-200"
+              className="text-xl text-[rgba(249,250,251,0.3)] hover:text-brand-violet-light hover:scale-110 transition-all duration-200"
             >
               {icon}
             </a>
           ))}
         </div>
 
-        <p
-          style={{
-            fontFamily: 'JetBrains Mono, monospace',
-            fontSize: '0.68rem',
-            color: 'rgba(249,250,251,0.25)',
-            letterSpacing: '0.05em',
-          }}
-        >
-          © 2026 Kaneeza Batool · Built from Sukkur, Pakistan
+        <p className="font-mono text-xs text-slate-400">
+          Built from Sukkur, Pakistan · 2026
+        </p>
+
+        <p className="font-mono text-xs text-slate-600">
+          © 2026 Kaneeza Batool
         </p>
       </div>
     </footer>

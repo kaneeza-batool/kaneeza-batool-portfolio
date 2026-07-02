@@ -47,15 +47,9 @@ function App() {
             transition={{ duration: 0.2 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label="Back to top"
-            className="fixed bottom-6 right-6 z-50 p-3 rounded-full transition-all"
-            style={{
-              background: 'rgba(26,21,96,0.8)',
-              border: '1px solid rgba(124,58,237,0.35)',
-              color: '#A78BFA',
-              backdropFilter: 'blur(12px)',
-              boxShadow: '0 4px 20px rgba(124,58,237,0.2)',
-            }}
-            whileHover={{ boxShadow: '0 0 20px rgba(124,58,237,0.5)' }}
+            className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-brand-violet/20 border border-brand-violet/40 text-brand-violet-light hover:bg-brand-violet/40 hover:border-brand-violet hover:shadow-[0_0_20px_rgba(124,58,237,0.4)] transition-all"
+            style={{ backdropFilter: 'blur(12px)' }}
+            whileHover={{ scale: 1.05 }}
           >
             <ArrowUp size={18} />
           </motion.button>

@@ -6,7 +6,15 @@ export default function Journey() {
     <section id="journey" className="py-28 relative overflow-hidden" style={{ background: 'rgba(26,21,96,0.1)' }}>
       <div
         className="radial-glow"
-        style={{ width: '400px', height: '400px', background: 'rgba(124,58,237,0.06)', top: '30%', left: '-8%' }}
+        style={{
+          width: '500px',
+          height: '500px',
+          background: 'rgba(124,58,237,0.05)',
+          top: '-60px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          filter: 'blur(100px)',
+        }}
       />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -23,53 +31,61 @@ export default function Journey() {
         </motion.div>
 
         <div className="relative">
-          {/* Vertical line — desktop */}
+          {/* Vertical line desktop */}
           <div
-            className="hidden md:block absolute top-0 w-px h-full"
+            className="hidden md:block absolute top-0 h-full"
             style={{
               left: '50%',
               transform: 'translateX(-50%)',
+              width: '2px',
               background: 'linear-gradient(to bottom, #7C3AED 0%, rgba(124,58,237,0.6) 60%, rgba(124,58,237,0.05) 100%)',
+              filter: 'drop-shadow(0 0 4px rgba(124,58,237,0.4))',
             }}
           />
-          {/* Vertical line — mobile */}
+          {/* Vertical line mobile */}
           <div
-            className="block md:hidden absolute top-0 w-px h-full"
+            className="block md:hidden absolute top-0 h-full"
             style={{
               left: '20px',
+              width: '2px',
               background: 'linear-gradient(to bottom, #7C3AED 0%, rgba(124,58,237,0.4) 100%)',
+              filter: 'drop-shadow(0 0 4px rgba(124,58,237,0.4))',
             }}
           />
 
           {journey.map((item, index) => (
-            <div key={item.id} className="relative mb-10">
-              {/* Center dot — desktop */}
+            <div key={item.id} className="relative mb-8 md:mb-10">
+              {/* Center dot desktop */}
               <div
-                className="hidden md:flex absolute z-10 items-center justify-center"
+                className="hidden md:flex absolute z-10 items-center justify-center rounded-full"
                 style={{
                   left: '50%',
                   top: '28px',
                   transform: 'translate(-50%, 0)',
-                  width: '14px',
-                  height: '14px',
-                  borderRadius: '50%',
-                  backgroundColor: '#7C3AED',
-                  boxShadow: '0 0 0 4px rgba(124,58,237,0.15), 0 0 20px rgba(124,58,237,0.6)',
+                  width: '16px',
+                  height: '16px',
+                  background: 'rgba(124,58,237,0.2)',
+                  border: '2px solid #7C3AED',
+                  boxShadow: '0 0 12px rgba(124,58,237,0.6)',
                 }}
-              />
+              >
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#7C3AED' }} />
+              </div>
               {/* Mobile dot */}
               <div
-                className="block md:hidden absolute z-10"
+                className="flex md:hidden absolute z-10 items-center justify-center rounded-full"
                 style={{
-                  left: '14px',
+                  left: '13px',
                   top: '28px',
-                  width: '12px',
-                  height: '12px',
-                  borderRadius: '50%',
-                  backgroundColor: '#7C3AED',
-                  boxShadow: '0 0 0 3px rgba(124,58,237,0.2), 0 0 16px rgba(124,58,237,0.7)',
+                  width: '14px',
+                  height: '14px',
+                  background: 'rgba(124,58,237,0.2)',
+                  border: '2px solid #7C3AED',
+                  boxShadow: '0 0 12px rgba(124,58,237,0.6)',
                 }}
-              />
+              >
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7C3AED' }} />
+              </div>
 
               {/* Mobile content */}
               <motion.div
@@ -121,30 +137,25 @@ export default function Journey() {
 function JourneyCard({ item, align }) {
   return (
     <div
-      className="glass p-5 hover:border-brand-violet/40 transition-all duration-300"
+      className="rounded-2xl p-6 transition-all duration-300 hover:border-brand-violet/30 hover:shadow-[0_8px_24px_rgba(124,58,237,0.1)] border border-white/[0.08]"
       style={{
+        background: 'rgba(255,255,255,0.03)',
         ...(align === 'right' ? { textAlign: 'right' } : {}),
       }}
     >
-      <p
-        style={{
-          fontFamily: 'JetBrains Mono, monospace',
-          fontSize: '0.65rem',
-          color: '#A78BFA',
-          textTransform: 'uppercase',
-          letterSpacing: '0.1em',
-          marginBottom: '6px',
-        }}
+      <span
+        className="inline-block mb-3 px-3 py-1 rounded-full text-brand-violet-light text-xs bg-brand-violet/15 border border-brand-violet/25"
+        style={{ fontFamily: 'JetBrains Mono, monospace' }}
       >
         {item.year}
-      </p>
+      </span>
       <p
-        className="font-display font-semibold text-white mb-2"
-        style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1rem' }}
+        className="font-display font-semibold text-base text-white mb-2"
+        style={{ fontFamily: 'Space Grotesk, sans-serif' }}
       >
         {item.title}
       </p>
-      <p className="font-body text-[rgba(249,250,251,0.6)] text-sm leading-relaxed">
+      <p className="text-slate-400 text-sm leading-relaxed">
         {item.description}
       </p>
     </div>
