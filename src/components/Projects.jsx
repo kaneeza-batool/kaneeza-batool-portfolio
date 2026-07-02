@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Star } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import { projects } from '../data/projects.js'
 
@@ -15,14 +15,8 @@ const filters = [
 function TagPill({ tag }) {
   return (
     <span
-      className="px-2.5 py-0.5 rounded-full border border-brand-violet/25 text-brand-violet-light"
-      style={{
-        fontFamily: 'JetBrains Mono, monospace',
-        fontSize: '0.65rem',
-        background: 'rgba(124,58,237,0.08)',
-        textTransform: 'uppercase',
-        letterSpacing: '0.05em',
-      }}
+      className="bg-brand-violet/10 border border-brand-violet/25 text-brand-violet-light rounded-lg px-3 py-1 font-mono text-xs"
+      style={{ textTransform: 'uppercase', letterSpacing: '0.05em' }}
     >
       {tag}
     </span>
@@ -40,12 +34,25 @@ export default function Projects() {
   const featuredProject = projects.find(p => p.featured)
   const showFeatured = featuredProject && matchesFilter(featuredProject, activeFilter)
   const otherProjects = projects.filter(p => !p.featured && matchesFilter(p, activeFilter))
+  const filteredCount = (showFeatured ? 1 : 0) + otherProjects.length
 
   return (
     <section id="projects" className="py-28 relative overflow-hidden">
+      {/* Centered background blob */}
       <div
-        className="radial-glow"
-        style={{ width: '500px', height: '500px', background: 'rgba(96,165,250,0.05)', bottom: '10%', right: '0' }}
+        style={{
+          position: 'absolute',
+          width: '600px',
+          height: '600px',
+          backgroundColor: 'rgba(124,58,237,0.04)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none',
+          zIndex: 0,
+        }}
       />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -56,17 +63,17 @@ export default function Projects() {
           viewport={{ once: true }}
         >
           <span className="section-label">03 / Projects</span>
-          <h2 className="section-heading mb-10">
+          <h2 className="section-heading mb-8">
             Featured <span className="gradient-text">Projects</span>
           </h2>
 
-          {/* Filter tabs */}
-          <div className="flex gap-2 flex-wrap mb-10">
+          {/* Filter tabs - glass pill container */}
+          <div className="glass rounded-2xl p-1.5 inline-flex flex-wrap gap-1 mb-4">
             {filters.map(({ label, value }) => (
               <button
                 key={value}
                 onClick={() => setActiveFilter(value)}
-                className={`px-4 py-2 rounded-full text-sm font-body font-medium transition-all duration-200 ${
+                className={`px-4 py-2 rounded-xl text-sm font-body font-medium transition-all duration-200 ${
                   activeFilter === value ? 'tab-active' : 'tab-inactive'
                 }`}
               >
@@ -74,6 +81,11 @@ export default function Projects() {
               </button>
             ))}
           </div>
+
+          {/* Project count */}
+          <p className="font-mono text-xs text-slate-500 mb-10">
+            {filteredCount} projects
+          </p>
         </motion.div>
 
         {/* Featured project */}
@@ -85,34 +97,30 @@ export default function Projects() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16, transition: { duration: 0.18 } }}
               transition={{ duration: 0.35 }}
-              className="glass mb-8 overflow-hidden"
-              style={{ border: '1px solid rgba(124,58,237,0.3)' }}
+              className="mb-8 overflow-hidden rounded-2xl"
+              style={{
+                backgroundColor: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(124,58,237,0.3)',
+              }}
             >
-              {/* Featured header bar */}
+              {/* Top accent bar */}
               <div
                 className="h-1 w-full"
                 style={{ background: 'linear-gradient(90deg, #7C3AED, #A78BFA, #7C3AED)' }}
               />
               <div className="p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <span
-                    className="px-3 py-1 rounded-full border border-brand-violet/40 text-brand-violet-light"
-                    style={{
-                      fontFamily: 'JetBrains Mono, monospace',
-                      fontSize: '0.65rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.1em',
-                      background: 'rgba(124,58,237,0.1)',
-                    }}
-                  >
-                    ★ Featured Project
+                {/* Featured label - top left */}
+                <div className="flex items-center gap-1.5 mb-6">
+                  <Star size={11} className="text-brand-violet-light" />
+                  <span className="gradient-text font-mono text-xs uppercase tracking-widest">
+                    Featured
                   </span>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-10">
                   <div>
                     <h3
-                      className="font-display font-bold text-2xl text-white mb-3"
+                      className="font-display font-black text-3xl text-white mb-3"
                       style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                     >
                       {featuredProject.title}
@@ -131,8 +139,8 @@ export default function Projects() {
                           href={featuredProject.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-primary text-sm"
-                          style={{ padding: '0.5rem 1.25rem' }}
+                          className="flex items-center gap-2 text-sm text-white px-5 py-2 rounded-full transition-all hover:shadow-[0_0_24px_rgba(124,58,237,0.55)]"
+                          style={{ background: 'linear-gradient(135deg, #7C3AED, #A78BFA)' }}
                         >
                           <ExternalLink size={14} />
                           Live Site
@@ -143,7 +151,11 @@ export default function Projects() {
                           href={featuredProject.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 border border-white/15 text-[rgba(249,250,251,0.7)] px-5 py-2 rounded-full text-sm hover:border-brand-violet/50 hover:text-white transition-all"
+                          className="flex items-center gap-2 text-sm text-[rgba(249,250,251,0.7)] px-5 py-2 rounded-full border border-brand-violet/30 hover:border-brand-violet hover:text-white transition-all"
+                          style={{
+                            backgroundColor: 'rgba(255,255,255,0.04)',
+                            backdropFilter: 'blur(8px)',
+                          }}
                         >
                           <FaGithub size={14} />
                           GitHub
@@ -152,27 +164,21 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Decorative panel */}
+                  {/* Decorative panel with grid pattern */}
                   <div
                     className="relative flex items-center justify-center rounded-xl overflow-hidden min-h-[150px]"
-                    style={{ background: 'rgba(26,21,96,0.5)', border: '1px solid rgba(124,58,237,0.12)' }}
+                    style={{
+                      backgroundColor: 'rgba(26,21,96,0.5)',
+                      border: '1px solid rgba(124,58,237,0.12)',
+                      backgroundImage:
+                        'repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(124,58,237,0.06) 28px, rgba(124,58,237,0.06) 29px), repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(124,58,237,0.06) 28px, rgba(124,58,237,0.06) 29px)',
+                    }}
                   >
-                    <div
-                      className="absolute inset-0 opacity-[0.12]"
-                      style={{
-                        backgroundImage:
-                          'repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(124,58,237,0.6) 28px, rgba(124,58,237,0.6) 29px), repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(124,58,237,0.6) 28px, rgba(124,58,237,0.6) 29px)',
-                      }}
-                    />
-                    <div className="relative text-center px-4">
-                      <div className="text-2xl mb-2">🏠</div>
-                      <span
-                        className="text-brand-violet/50"
-                        style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.7rem' }}
-                      >
-                        dexopk.netlify.app
-                      </span>
-                    </div>
+                    <span
+                      className="relative text-center px-4 font-mono text-sm text-brand-violet/20"
+                    >
+                      dexopk.netlify.app
+                    </span>
                   </div>
                 </div>
               </div>
@@ -186,22 +192,24 @@ export default function Projects() {
             {otherProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="glass-hover p-6 flex flex-col"
+                className="flex flex-col rounded-2xl p-6 border border-white/8 hover:border-brand-violet/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(124,58,237,0.18)]"
+                style={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: index * 0.07 }}
               >
                 {/* Category dot */}
-                <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center mb-3">
                   <div
                     className="w-2 h-2 rounded-full"
                     style={{
-                      background: project.category === 'hackathon'
-                        ? '#34D399'
-                        : project.category === 'react'
-                        ? '#60A5FA'
-                        : '#7C3AED',
+                      backgroundColor:
+                        project.category === 'hackathon'
+                          ? '#34D399'
+                          : project.category === 'react'
+                          ? '#60A5FA'
+                          : '#7C3AED',
                     }}
                   />
                 </div>
@@ -221,7 +229,10 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="flex gap-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <div
+                  className="flex gap-4 pt-4 mt-auto"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
+                >
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
@@ -245,11 +256,8 @@ export default function Projects() {
                     </a>
                   )}
                   {!project.liveUrl && !project.githubUrl && (
-                    <span
-                      className="text-xs text-[rgba(249,250,251,0.25)]"
-                      style={{ fontFamily: 'JetBrains Mono, monospace' }}
-                    >
-                      No links yet
+                    <span className="font-mono text-xs text-slate-600 italic">
+                      Repo private or coming soon
                     </span>
                   )}
                 </div>

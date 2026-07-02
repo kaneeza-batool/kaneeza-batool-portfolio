@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Star } from 'lucide-react'
 import { programs } from '../data/programs.js'
 
 const borderColorMap = {
@@ -10,27 +11,28 @@ const borderColorMap = {
 const statusConfig = {
   completed: {
     label: 'Completed',
+    dotColor: '#34D399',
     style: { background: 'rgba(52,211,153,0.1)', border: '1px solid rgba(52,211,153,0.3)', color: '#34D399' },
   },
   active: {
     label: 'Active',
+    dotColor: '#A78BFA',
     style: { background: 'rgba(124,58,237,0.12)', border: '1px solid rgba(124,58,237,0.35)', color: '#A78BFA' },
   },
   qualified: {
     label: 'Round 2',
+    dotColor: '#FBBF24',
     style: { background: 'rgba(251,191,36,0.1)', border: '1px solid rgba(251,191,36,0.3)', color: '#FBBF24' },
   },
 }
 
-const badgeConfig = {
-  'top-performer': { label: '⭐ Top Performer', color: '#FBBF24' },
-  round2: { label: '🏆 Round 2 / 324 Teams', color: '#FBBF24' },
-  gold: { label: '🏆 Round 2 / 324 Teams', color: '#FBBF24' },
-}
-
 export default function Programs() {
   return (
-    <section id="programs" className="py-28 relative overflow-hidden" style={{ background: 'rgba(26,21,96,0.1)' }}>
+    <section
+      id="programs"
+      className="py-28 relative overflow-hidden"
+      style={{ backgroundColor: 'rgba(26,21,96,0.15)' }}
+    >
       <div
         className="radial-glow"
         style={{ width: '450px', height: '450px', background: 'rgba(124,58,237,0.07)', bottom: '0', left: '-5%' }}
@@ -44,32 +46,43 @@ export default function Programs() {
           viewport={{ once: true }}
         >
           <span className="section-label">04 / Programs</span>
-          <h2 className="section-heading mb-12">
+          <h2 className="section-heading mb-4">
             Programs &amp; <span className="gradient-text">Achievements</span>
           </h2>
+          <p className="font-mono text-xs text-slate-500 mb-12">
+            {programs.length} programs and counting
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {programs.map((program, index) => {
             const accentColor = borderColorMap[program.status] || '#7C3AED'
             const statusConf = statusConfig[program.status]
-            const badgeConf = program.badge ? badgeConfig[program.badge] : null
 
             return (
               <motion.div
                 key={program.id}
-                className="glass-hover p-6 flex flex-col relative overflow-hidden"
-                style={{ borderLeft: `3px solid ${accentColor}` }}
+                className="flex flex-col rounded-2xl p-6 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(124,58,237,0.15)]"
+                style={{
+                  backgroundColor: 'rgba(255,255,255,0.03)',
+                  borderTop: '1px solid rgba(255,255,255,0.08)',
+                  borderRight: '1px solid rgba(255,255,255,0.08)',
+                  borderBottom: '1px solid rgba(255,255,255,0.08)',
+                  borderLeft: `4px solid ${accentColor}`,
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.08 }}
               >
-                {/* Accent glow */}
+                {/* Accent glow strip */}
                 <div
                   style={{
                     position: 'absolute',
-                    top: 0, left: 0, bottom: 0, width: '3px',
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    width: '4px',
                     background: `linear-gradient(to bottom, ${accentColor}, transparent)`,
                     opacity: 0.6,
                   }}
@@ -83,50 +96,66 @@ export default function Programs() {
                     >
                       {program.title}
                     </h3>
+                    {/* Org and year with separator dot */}
                     <p
-                      className="mt-1"
-                      style={{
-                        fontFamily: 'JetBrains Mono, monospace',
-                        fontSize: '0.65rem',
-                        color: '#A78BFA',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em',
-                      }}
+                      className="mt-1.5 font-mono text-xs"
+                      style={{ color: 'rgba(148,163,184,0.7)' }}
                     >
-                      {program.org}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'JetBrains Mono, monospace',
-                        fontSize: '0.62rem',
-                        color: 'rgba(249,250,251,0.35)',
-                        marginTop: '2px',
-                      }}
-                    >
-                      {program.year}
+                      {program.org} · {program.year}
                     </p>
                   </div>
 
-                  <div className="flex flex-col items-end gap-1.5 shrink-0">
+                  {/* Status badge with colored dot */}
+                  <div className="shrink-0">
                     <span
-                      className="px-2 py-0.5 rounded-full text-xs"
-                      style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.62rem', ...statusConf.style }}
+                      className="px-3 py-1 rounded-full inline-flex items-center gap-1.5 font-mono"
+                      style={{ fontSize: '0.65rem', ...statusConf.style }}
                     >
-                      {statusConf.label}
-                    </span>
-                    {badgeConf && (
                       <span
                         style={{
-                          fontFamily: 'JetBrains Mono, monospace',
-                          fontSize: '0.62rem',
-                          color: badgeConf.color,
+                          width: '4px',
+                          height: '4px',
+                          borderRadius: '50%',
+                          backgroundColor: statusConf.dotColor,
+                          display: 'inline-block',
+                          flexShrink: 0,
                         }}
-                      >
-                        {badgeConf.label}
-                      </span>
-                    )}
+                      />
+                      {statusConf.label}
+                    </span>
                   </div>
                 </div>
+
+                {/* Top performer badge - own row */}
+                {program.badge === 'top-performer' && (
+                  <div className="mb-3">
+                    <span
+                      className="inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full text-yellow-400"
+                      style={{
+                        backgroundColor: 'rgba(113,63,18,0.2)',
+                        border: '1px solid rgba(234,179,8,0.2)',
+                      }}
+                    >
+                      <Star size={12} />
+                      Top Performer
+                    </span>
+                  </div>
+                )}
+
+                {/* Gold / Round 2 badge */}
+                {program.badge === 'gold' && (
+                  <div className="mb-3">
+                    <span
+                      className="inline-flex items-center gap-2 font-mono text-xs px-3 py-1 rounded-full text-amber-300"
+                      style={{
+                        backgroundColor: 'rgba(120,53,15,0.2)',
+                        border: '1px solid rgba(245,158,11,0.2)',
+                      }}
+                    >
+                      Round 2 - 200/324 Teams
+                    </span>
+                  </div>
+                )}
 
                 <p className="font-body text-[rgba(249,250,251,0.58)] text-sm leading-relaxed flex-1">
                   {program.description}
