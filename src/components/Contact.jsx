@@ -99,8 +99,11 @@ export default function Contact() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
         >
-          <span className="section-label">07 / Contact</span>
-          <h2 className="section-heading mb-3">
+          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+            <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
+            07 / Contact
+          </p>
+          <h2 className="section-heading text-4xl lg:text-5xl mb-3">
             Get <span className="gradient-text">In Touch</span>
           </h2>
           <p className="font-body text-[rgba(249,250,251,0.55)] mb-12">

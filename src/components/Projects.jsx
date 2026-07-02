@@ -62,8 +62,11 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="section-label">03 / Projects</span>
-          <h2 className="section-heading mb-8">
+          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+            <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
+            03 / Projects
+          </p>
+          <h2 className="section-heading text-4xl lg:text-5xl mb-8">
             Featured <span className="gradient-text">Projects</span>
           </h2>
 
@@ -192,7 +195,7 @@ export default function Projects() {
             {otherProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="flex flex-col rounded-2xl p-6 border border-white/8 hover:border-brand-violet/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(124,58,237,0.18)]"
+                className="flex flex-col rounded-2xl p-6 border border-white/8 hover:border-brand-violet/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(124,58,237,0.18)]"
                 style={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

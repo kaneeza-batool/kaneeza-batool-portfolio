@@ -17,7 +17,7 @@ function SkillBadge({ skill, index }) {
   return (
     <motion.div
       key={skill.name}
-      className="rounded-2xl p-5 border border-white/[0.08] transition-all duration-300 hover:border-brand-violet/40 hover:shadow-[0_8px_32px_rgba(124,58,237,0.12)]"
+      className="rounded-2xl p-5 border border-white/[0.08] transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/40 hover:shadow-[0_8px_32px_rgba(124,58,237,0.12)]"
       style={{ background: 'rgba(255,255,255,0.03)' }}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -87,11 +87,11 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-4">
+          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
             <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
             02 / Skills
           </p>
-          <h2 className="section-heading text-5xl lg:text-6xl mb-10">
+          <h2 className="section-heading text-4xl lg:text-5xl mb-10">
             Technical <span className="gradient-text">Skills</span>
           </h2>
 

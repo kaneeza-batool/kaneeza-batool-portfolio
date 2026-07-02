@@ -45,8 +45,11 @@ export default function Programs() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="section-label">04 / Programs</span>
-          <h2 className="section-heading mb-4">
+          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+            <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
+            04 / Programs
+          </p>
+          <h2 className="section-heading text-4xl lg:text-5xl mb-4">
             Programs &amp; <span className="gradient-text">Achievements</span>
           </h2>
           <p className="font-mono text-xs text-slate-500 mb-12">

@@ -64,8 +64,11 @@ export default function Certifications() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="section-label">05 / Certifications</span>
-          <h2 className="section-heading mb-12">
+          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+            <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
+            05 / Certifications
+          </p>
+          <h2 className="section-heading text-4xl lg:text-5xl mb-12">
             Licenses &amp; <span className="gradient-text">Certifications</span>
           </h2>
         </motion.div>

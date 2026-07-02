@@ -62,16 +62,16 @@ export default function About() {
         transition={{ duration: 0.65 }}
         viewport={{ once: true, amount: 0.15 }}
       >
-        <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-4">
+        <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
           <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
           01 / About
         </p>
-        <h2 className="section-heading text-5xl lg:text-6xl mb-14">
+        <h2 className="section-heading text-4xl lg:text-5xl mb-14">
           About <span className="gradient-text">Me</span>
         </h2>
 
         <div className="grid lg:grid-cols-5 gap-12">
-          {/* Left — Story */}
+          {/* Left - Story */}
           <div className="lg:col-span-3 space-y-5">
             <p className="font-body text-[rgba(249,250,251,0.75)] leading-8 text-[1.0625rem] border-l-2 border-brand-violet/40 pl-4">
               Computer Science student at Sukkur IBA University and frontend trainee at SMIT. I build interfaces that are clean, functional, and thought through. Not just pages that look good - things that actually work.
@@ -95,7 +95,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right — Info cards */}
+          {/* Right - Info cards */}
           <motion.div
             className="lg:col-span-2 space-y-3"
             initial="hidden"

@@ -24,8 +24,11 @@ export default function Journey() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <span className="section-label">06 / Journey</span>
-          <h2 className="section-heading mb-16">
+          <p className="font-mono tracking-[0.2em] uppercase text-xs text-brand-violet mb-3">
+            <span className="inline-block w-6 h-px bg-brand-violet mr-3 align-middle" />
+            06 / Journey
+          </p>
+          <h2 className="section-heading text-4xl lg:text-5xl mb-16">
             My <span className="gradient-text">Journey</span>
           </h2>
         </motion.div>
@@ -137,7 +140,7 @@ export default function Journey() {
 function JourneyCard({ item, align }) {
   return (
     <div
-      className="rounded-2xl p-6 transition-all duration-300 hover:border-brand-violet/30 hover:shadow-[0_8px_24px_rgba(124,58,237,0.1)] border border-white/[0.08]"
+      className="rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-violet/30 hover:shadow-[0_8px_24px_rgba(124,58,237,0.1)] border border-white/[0.08]"
       style={{
         background: 'rgba(255,255,255,0.03)',
         ...(align === 'right' ? { textAlign: 'right' } : {}),

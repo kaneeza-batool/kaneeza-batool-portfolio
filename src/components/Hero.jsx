@@ -68,6 +68,7 @@ export default function Hero() {
           background: 'rgba(124,58,237,0.12)',
           top: '5%', left: '10%',
           animation: prefersReducedMotion ? 'none' : 'float1 10s ease-in-out infinite alternate',
+          willChange: 'transform',
         }}
       />
       <div
@@ -77,6 +78,7 @@ export default function Hero() {
           background: 'rgba(96,165,250,0.08)',
           bottom: '0', right: '10%',
           animation: prefersReducedMotion ? 'none' : 'float2 12s ease-in-out infinite alternate',
+          willChange: 'transform',
         }}
       />
       <div
@@ -85,6 +87,7 @@ export default function Hero() {
           width: '300px', height: '300px',
           background: 'rgba(167,139,250,0.08)',
           top: '60%', left: '55%',
+          willChange: 'transform',
         }}
       />
       <div
@@ -94,6 +97,7 @@ export default function Hero() {
           background: 'rgba(96,165,250,0.08)',
           top: '0', right: '5%',
           animation: prefersReducedMotion ? 'none' : 'float3 14s ease-in-out infinite alternate',
+          willChange: 'transform',
         }}
       />
 
@@ -276,7 +280,7 @@ export default function Hero() {
             <img
               src={avatarSrc}
               alt="Kaneeza Batool"
-              loading="eager"
+              loading="lazy"
               decoding="async"
               className="w-60 h-60 lg:w-[300px] lg:h-[300px] object-cover relative z-10"
               style={{
