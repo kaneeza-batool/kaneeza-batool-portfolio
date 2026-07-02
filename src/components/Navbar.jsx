@@ -43,19 +43,23 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 border-b ${
           isScrolled
-            ? 'backdrop-blur-2xl bg-[#0D0B1F]/75 border-b border-[#7C3AED]/15 shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
-            : 'bg-transparent'
+            ? 'backdrop-blur-2xl bg-[#0D0B1F]/85 border-brand-violet/20 shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
+            : 'bg-transparent border-brand-violet/10'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <a
             href="#"
-            className="font-display font-bold text-xl text-white tracking-tight"
+            className="font-display font-bold text-2xl text-white tracking-tight"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
-            Kaneeza<span className="text-brand-violet">.</span>
+            Kaneeza
+            <span
+              className="text-brand-violet"
+              style={{ textShadow: '0 0 12px rgba(124,58,237,0.9), 0 0 28px rgba(124,58,237,0.5)' }}
+            >.</span>
           </a>
 
           <ul className="hidden lg:flex items-center gap-1">
@@ -65,7 +69,7 @@ export default function Navbar() {
                 <li key={label}>
                   <a
                     href={href}
-                    className={`relative px-3 py-2 text-sm font-body tracking-wide transition-colors rounded-lg ${
+                    className={`nav-link-hover relative px-3 py-2 text-sm font-body tracking-wide transition-colors rounded-lg ${
                       isActive ? 'text-white' : 'text-slate-400 hover:text-white'
                     }`}
                   >
