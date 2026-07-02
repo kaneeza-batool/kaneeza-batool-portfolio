@@ -70,7 +70,7 @@ export default function Certifications() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-start">
           {certifications.map((cert, index) => {
             const iconKey = getIssuerIcon(cert.issuer)
             const accentColor = issuerColors[iconKey] || '#A78BFA'
@@ -78,14 +78,14 @@ export default function Certifications() {
             return (
               <motion.div
                 key={cert.id}
-                className="glass-hover p-6 flex flex-col gap-4"
+                className="glass-hover p-6 flex flex-col w-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.07 }}
               >
                 {/* Issuer row */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-4">
                   <div
                     className="flex items-center justify-center h-10 w-10 rounded-xl"
                     style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
@@ -103,10 +103,10 @@ export default function Certifications() {
                   </span>
                 </div>
 
-                {/* Cert name */}
-                <div>
+                {/* Cert name and issuer */}
+                <div className="mb-3">
                   <h3
-                    className="font-display font-semibold text-[0.95rem] text-white leading-snug mb-1"
+                    className="font-semibold text-[0.95rem] text-white leading-snug mb-1"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                   >
                     {cert.title}
@@ -137,11 +137,33 @@ export default function Certifications() {
                   </p>
                 )}
 
-                {/* Bottom accent line */}
-                <div
-                  className="mt-auto h-0.5 rounded-full"
-                  style={{ background: `linear-gradient(90deg, ${accentColor}40, transparent)` }}
-                />
+                {/* Button and accent line - pushed to bottom */}
+                <div className="mt-auto pt-4 flex flex-col gap-3">
+                  {cert.credentialUrl ? (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full transition-opacity hover:opacity-75"
+                      style={{
+                        fontFamily: 'JetBrains Mono, monospace',
+                        border: `1px solid ${accentColor}50`,
+                        color: accentColor,
+                        backgroundColor: `${accentColor}12`,
+                        width: 'fit-content',
+                      }}
+                    >
+                      Show Credential
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </a>
+                  ) : null}
+                  <div
+                    className="h-0.5 rounded-full"
+                    style={{ background: `linear-gradient(90deg, ${accentColor}40, transparent)` }}
+                  />
+                </div>
               </motion.div>
             )
           })}
