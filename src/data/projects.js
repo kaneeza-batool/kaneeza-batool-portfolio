@@ -47,6 +47,24 @@ export const PROJECTS = [
       'Session memory for continuous learning context',
       'Streamlit dashboard with progress analytics',
     ],
+    techGroups: {
+      frontend:  ['Streamlit'],
+      backend:   ['Python', 'LangChain'],
+      database:  ['ChromaDB'],
+      ai:        ['Gemini API'],
+      tools:     [],
+    },
+    architecture: [
+      { label: 'User',                 type: 'user'     },
+      { label: 'Streamlit Dashboard',  type: 'frontend' },
+      { label: 'Python + LangChain',   type: 'backend'  },
+      { label: 'Gemini API',           type: 'ai'       },
+      { label: 'ChromaDB',             type: 'database' },
+    ],
+    lessonsLearned:
+      'RAG requires thoughtful document chunking and retrieval tuning — embedding quality and retrieval precision matter as much as model capability when grounding answers in domain knowledge.',
+    futureImprovements:
+      'Voice-based interaction, multi-language support, adaptive difficulty scoring, React-based frontend to replace Streamlit',
     techStack: ['Python', 'Streamlit', 'Gemini API', 'LangChain', 'ChromaDB'],
     status: 'completed',
     year: '2024',
@@ -77,6 +95,24 @@ export const PROJECTS = [
       'Emergency alert notifications with contact escalation',
       'Voice-friendly, high-contrast accessible interface',
     ],
+    techGroups: {
+      frontend:  ['Streamlit'],
+      backend:   ['Python', 'Pandas'],
+      database:  ['Firebase'],
+      ai:        ['Gemini API'],
+      tools:     [],
+    },
+    architecture: [
+      { label: 'Elderly User / Family',   type: 'user'     },
+      { label: 'Streamlit Dashboard',     type: 'frontend' },
+      { label: 'Python + Pandas',         type: 'backend'  },
+      { label: 'Gemini API',              type: 'ai'       },
+      { label: 'Firebase Realtime DB',    type: 'database' },
+    ],
+    lessonsLearned:
+      'Accessibility cannot be an afterthought — designing for elderly users reshaped every interaction model, from alert escalation logic to font contrast ratios and tap target sizing.',
+    futureImprovements:
+      'Wearable device integration, WhatsApp and SMS alert channels, multi-carer permission levels, AI-generated weekly health summary reports',
     techStack: ['Python', 'Streamlit', 'Gemini API', 'Firebase', 'Pandas'],
     status: 'completed',
     year: '2024',
@@ -107,6 +143,24 @@ export const PROJECTS = [
       'Admin dashboard for inventory and order tracking',
       'Cloudinary-powered image uploads for product listings',
     ],
+    techGroups: {
+      frontend:  ['React'],
+      backend:   ['Node.js', 'Express.js'],
+      database:  ['MongoDB'],
+      ai:        [],
+      tools:     ['JWT', 'Cloudinary'],
+    },
+    architecture: [
+      { label: 'Customer / Admin',    type: 'user'     },
+      { label: 'React Frontend',      type: 'frontend' },
+      { label: 'Node.js + Express',   type: 'backend'  },
+      { label: 'MongoDB',             type: 'database' },
+      { label: 'Cloudinary CDN',      type: 'service'  },
+    ],
+    lessonsLearned:
+      'Stateless JWT authentication scales well but needs a careful invalidation strategy — a hybrid approach with short-lived access tokens and refresh tokens is worth the added complexity.',
+    futureImprovements:
+      'Local payment gateway integration (JazzCash / EasyPaisa), seller analytics dashboard, PWA with offline browsing, AI-powered product recommendations',
     techStack: ['MongoDB', 'Express.js', 'React', 'Node.js', 'JWT', 'Cloudinary'],
     status: 'in-progress',
     year: '2024',
@@ -137,6 +191,22 @@ export const PROJECTS = [
       'Overdue flags and alert notifications',
       'Data export to CSV for record keeping',
     ],
+    techGroups: {
+      frontend:  ['React', 'CSS Modules'],
+      backend:   [],
+      database:  ['LocalStorage'],
+      ai:        [],
+      tools:     ['JavaScript'],
+    },
+    architecture: [
+      { label: 'Librarian / Member',  type: 'user'     },
+      { label: 'React UI',            type: 'frontend' },
+      { label: 'LocalStorage',        type: 'database' },
+    ],
+    lessonsLearned:
+      'State management complexity scales faster than feature count — even a CRUD app benefits from establishing clear data flow patterns early, before logic becomes tightly entangled.',
+    futureImprovements:
+      'Cloud sync via Firebase, barcode scanning for check-in/out, multi-library support, mobile-first PWA version',
     techStack: ['React', 'JavaScript', 'LocalStorage', 'CSS Modules'],
     status: 'completed',
     year: '2023',
@@ -167,6 +237,23 @@ export const PROJECTS = [
       'Personal journal entries with tags',
       'LocalStorage persistence across sessions',
     ],
+    techGroups: {
+      frontend:  ['React', 'CSS3'],
+      backend:   [],
+      database:  ['LocalStorage'],
+      ai:        [],
+      tools:     ['Chart.js', 'JavaScript'],
+    },
+    architecture: [
+      { label: 'User',          type: 'user'     },
+      { label: 'React UI',      type: 'frontend' },
+      { label: 'Chart.js',      type: 'service'  },
+      { label: 'LocalStorage',  type: 'database' },
+    ],
+    lessonsLearned:
+      'Data visualization transforms an app from a record-keeper into a reflection tool — charting mood patterns revealed insights that raw text logs never surfaced for users.',
+    futureImprovements:
+      'AI-driven mood predictions, optional therapist sharing mode, push notification daily check-ins, cloud backup',
     techStack: ['React', 'JavaScript', 'Chart.js', 'LocalStorage', 'CSS3'],
     status: 'completed',
     year: '2023',
@@ -197,6 +284,22 @@ export const PROJECTS = [
       'Daily completion analytics and progress bars',
       'Offline-first with LocalStorage persistence',
     ],
+    techGroups: {
+      frontend:  ['React', 'Tailwind CSS'],
+      backend:   [],
+      database:  ['LocalStorage'],
+      ai:        [],
+      tools:     ['JavaScript'],
+    },
+    architecture: [
+      { label: 'User',             type: 'user'     },
+      { label: 'React + Tailwind', type: 'frontend' },
+      { label: 'LocalStorage',     type: 'database' },
+    ],
+    lessonsLearned:
+      'Gamification works best when it mirrors real behavioral psychology — streak counters and contribution grids tap into the same reward loops that make physical habit formation stick.',
+    futureImprovements:
+      'Habit templates library, social accountability pairing, Notion API integration, weekly stats digest email',
     techStack: ['React', 'JavaScript', 'LocalStorage', 'Tailwind CSS'],
     status: 'completed',
     year: '2024',
@@ -227,6 +330,22 @@ export const PROJECTS = [
       'Lightbox image gallery for ambiance showcase',
       'Mobile-first fully responsive layout',
     ],
+    techGroups: {
+      frontend:  ['HTML5', 'CSS3', 'Bootstrap'],
+      backend:   [],
+      database:  [],
+      ai:        [],
+      tools:     ['JavaScript'],
+    },
+    architecture: [
+      { label: 'Restaurant Visitor',  type: 'user'     },
+      { label: 'HTML + CSS + JS',     type: 'frontend' },
+      { label: 'Bootstrap',           type: 'service'  },
+    ],
+    lessonsLearned:
+      'Framework-free development is the best foundation — mastering DOM manipulation, event delegation, and CSS animations from scratch made every framework I learned afterward faster and easier to pick up.',
+    futureImprovements:
+      'Online ordering system, real-time reservation API integration, CMS-backed menu management, micro-animation polish',
     techStack: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
     status: 'completed',
     year: '2023',
@@ -257,6 +376,23 @@ export const PROJECTS = [
       'Interactive skills, experience, and project sections',
       'Responsive across all device sizes',
     ],
+    techGroups: {
+      frontend:  ['React', 'Vite', 'Tailwind CSS v4', 'Framer Motion'],
+      backend:   [],
+      database:  [],
+      ai:        [],
+      tools:     ['React Icons', 'EmailJS', 'Lenis'],
+    },
+    architecture: [
+      { label: 'Visitor',         type: 'user'     },
+      { label: 'React + Vite',    type: 'frontend' },
+      { label: 'Framer Motion',   type: 'service'  },
+      { label: 'EmailJS',         type: 'service'  },
+    ],
+    lessonsLearned:
+      'Design systems and data-driven architecture pay back immediately — adding new sections required zero structural rework because every token and pattern was centralized from day one.',
+    futureImprovements:
+      'Blog section with MDX, dark/light theme toggle, multilingual support, CMS integration for real-time project updates',
     techStack: ['React', 'Vite', 'Tailwind CSS v4', 'Framer Motion', 'React Icons'],
     status: 'in-progress',
     year: '2025',
@@ -287,6 +423,22 @@ export const PROJECTS = [
       '5-day forecast with hourly breakdown',
       'Temperature unit toggle between °C and °F',
     ],
+    techGroups: {
+      frontend:  ['HTML5', 'CSS3'],
+      backend:   [],
+      database:  [],
+      ai:        [],
+      tools:     ['JavaScript', 'OpenWeather API', 'Fetch API'],
+    },
+    architecture: [
+      { label: 'User',              type: 'user'     },
+      { label: 'HTML + CSS + JS',   type: 'frontend' },
+      { label: 'OpenWeather API',   type: 'service'  },
+    ],
+    lessonsLearned:
+      'External APIs demand defensive programming — gracefully handling rate limits, network failures, and malformed responses is as important as the happy-path feature itself.',
+    futureImprovements:
+      'Air quality index, UV index, hourly trend charts, progressive web app with cached last-known state for offline use',
     techStack: ['JavaScript', 'HTML5', 'CSS3', 'OpenWeather API', 'Fetch API'],
     status: 'completed',
     year: '2023',
@@ -317,6 +469,22 @@ export const PROJECTS = [
       'Framer Motion animation variants included',
       'Storybook documentation for all components',
     ],
+    techGroups: {
+      frontend:  ['React', 'Tailwind CSS', 'Framer Motion'],
+      backend:   [],
+      database:  [],
+      ai:        [],
+      tools:     ['JavaScript', 'Storybook'],
+    },
+    architecture: [
+      { label: 'Developer',          type: 'user'     },
+      { label: 'React Components',   type: 'frontend' },
+      { label: 'Storybook Docs',     type: 'service'  },
+    ],
+    lessonsLearned:
+      'The hardest part of a component library is API design — composable, flexible components require deliberate decisions about what stays encapsulated and what is configurable from outside.',
+    futureImprovements:
+      'NPM package publishing, TypeScript type definitions, visual regression testing with Chromatic, live interactive component playground',
     techStack: ['React', 'JavaScript', 'Framer Motion', 'Tailwind CSS', 'Storybook'],
     status: 'in-progress',
     year: '2024',

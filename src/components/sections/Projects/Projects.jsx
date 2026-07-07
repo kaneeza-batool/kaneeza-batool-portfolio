@@ -8,6 +8,7 @@ import ProjectFilterNav from './ProjectFilterNav'
 import FeaturedProjectCard from './FeaturedProjectCard'
 import ProjectsGrid from './ProjectsGrid'
 import ProjectLearnings from './ProjectLearnings'
+import ProjectModal from './ProjectModal'
 
 function SectionDivider({ label, count }) {
   return (
@@ -40,12 +41,13 @@ function SectionDivider({ label, count }) {
 }
 
 function Projects() {
-  const [activeFilter, setActiveFilter] = useState('all')
+  const [activeFilter,  setActiveFilter]  = useState('all')
+  const [activeProject, setActiveProject] = useState(null)
 
   const handleFilterChange = useCallback((id) => setActiveFilter(id), [])
-
-  /* Modal handler — placeholder; modal built in next prompt */
-  const handleViewDetails = useCallback((_project) => {}, [])
+  const handleViewDetails  = useCallback((project) => setActiveProject(project), [])
+  const handleModalClose   = useCallback(() => setActiveProject(null), [])
+  const handleModalNavigate = useCallback((project) => setActiveProject(project), [])
 
   const featuredProjects = useMemo(() => {
     const featured = PROJECTS.filter((p) => p.featured)
@@ -184,6 +186,14 @@ function Projects() {
           <ProjectLearnings />
         </div>
       </Container>
+
+      {/* ── Project details modal ─────────────────────── */}
+      <ProjectModal
+        project={activeProject}
+        allProjects={PROJECTS}
+        onClose={handleModalClose}
+        onNavigate={handleModalNavigate}
+      />
     </SectionWrapper>
   )
 }
