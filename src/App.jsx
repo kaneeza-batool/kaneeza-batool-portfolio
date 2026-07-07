@@ -1,21 +1,33 @@
-import { SEO, MouseGlow } from '@components/common'
-import { useLenis } from '@hooks/useLenis'
-import { SITE } from '@constants'
+import AppLayout from '@components/layout/AppLayout'
+import {
+  Home,
+  About,
+  Skills,
+  Experience,
+  Projects,
+  Achievements,
+  Certifications,
+  GitHub,
+  Roadmap,
+  CurrentFocus,
+  Contact,
+} from '@components/sections'
 
 function App() {
-  useLenis()
-
   return (
-    <>
-      <SEO />
-      <MouseGlow />
-
-      <div className="animated-mesh" aria-hidden="true" />
-
-      <main id="main-content">
-        {/* Sections will be added in future prompts */}
-      </main>
-    </>
+    <AppLayout>
+      <Home />
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Achievements />
+      <Certifications />
+      <GitHub />
+      <Roadmap />
+      <CurrentFocus />
+      <Contact />
+    </AppLayout>
   )
 }
 

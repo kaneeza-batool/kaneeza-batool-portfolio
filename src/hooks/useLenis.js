@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
+import { setLenis } from '@utils/lenis'
 
 export function useLenis() {
   const reducedMotion = usePrefersReducedMotion()
@@ -15,6 +16,8 @@ export function useLenis() {
       smoothWheel: true,
     })
 
+    setLenis(lenis)
+
     function raf(time) {
       lenis.raf(time)
       requestAnimationFrame(raf)
@@ -25,6 +28,7 @@ export function useLenis() {
     return () => {
       cancelAnimationFrame(rafId)
       lenis.destroy()
+      setLenis(null)
     }
   }, [reducedMotion])
 }

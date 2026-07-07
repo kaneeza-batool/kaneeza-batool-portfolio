@@ -25,12 +25,17 @@ export const SOCIAL = {
 }
 
 export const NAV_LINKS = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home',          href: '#home',          id: 'home' },
+  { label: 'About',         href: '#about',         id: 'about' },
+  { label: 'Skills',        href: '#skills',        id: 'skills' },
+  { label: 'Experience',    href: '#experience',    id: 'experience' },
+  { label: 'Projects',      href: '#projects',      id: 'projects' },
+  { label: 'Achievements',  href: '#achievements',  id: 'achievements' },
+  { label: 'Certifications',href: '#certifications',id: 'certifications' },
+  { label: 'GitHub',        href: '#github',        id: 'github' },
+  { label: 'Roadmap',       href: '#roadmap',       id: 'roadmap' },
+  { label: 'Current Focus', href: '#current-focus', id: 'current-focus' },
+  { label: 'Contact',       href: '#contact',       id: 'contact' },
 ]
 
 export const ANIMATION_DURATION = {
@@ -41,13 +46,15 @@ export const ANIMATION_DURATION = {
 }
 
 export const SECTION_IDS = {
-  home: 'home',
-  about: 'about',
-  skills: 'skills',
-  experience: 'experience',
-  projects: 'projects',
-  achievements: 'achievements',
-  certifications: 'certifications',
-  github: 'github',
-  contact: 'contact',
+  home:          'home',
+  about:         'about',
+  skills:        'skills',
+  experience:    'experience',
+  projects:      'projects',
+  achievements:  'achievements',
+  certifications:'certifications',
+  github:        'github',
+  roadmap:       'roadmap',
+  currentFocus:  'current-focus',
+  contact:       'contact',
 }
