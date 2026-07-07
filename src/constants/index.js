@@ -22,6 +22,7 @@ export const SOCIAL = {
   github: 'https://github.com/kaneeza-batool',
   linkedin: 'https://linkedin.com/in/kaneeza-batool',
   twitter: 'https://twitter.com/kaneeza_batool',
+  leetcode: 'https://leetcode.com/kaneeza-batool',
 }
 
 export const NAV_LINKS = [
