@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Colors ── */
+  --color-primary:        #081B3A;
+  --color-secondary:      #0F2854;
+  --color-accent-blue:    #2E6BFF;
+  --color-accent-purple:  #6A5CFF;
+  --color-background:     #050E20;
+  --color-surface:        #0D1F43;
+  --color-card:           #102A59;
+  --color-border:         rgba(255,255,255,0.08);
+  --color-text-primary:   #FFFFFF;
+  --color-text-secondary: #A8B2D1;
+  --color-muted:          #6E7B9C;
+  --color-success:        #22C55E;
+  --color-warning:        #F59E0B;
+  --color-error:          #EF4444;
+
+  /* ── Fonts ── */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* ── Font Sizes ── */
+  --font-size-2xs: 0.625rem;
+  --font-size-xs:  0.75rem;
+  --font-size-sm:  0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg:  1.125rem;
+  --font-size-xl:  1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-8xl: 6rem;
+  --font-size-9xl: 8rem;
+
+  /* ── Letter Spacing ── */
+  --letter-spacing-tighter: -0.04em;
+  --letter-spacing-tight:   -0.02em;
+  --letter-spacing-snug:    -0.01em;
+  --letter-spacing-normal:   0em;
+  --letter-spacing-wide:     0.02em;
+  --letter-spacing-wider:    0.05em;
+  --letter-spacing-widest:   0.1em;
+
+  /* ── Spacing ── */
+  --spacing-section: 6rem;
+  --spacing-section-sm: 4rem;
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+  --spacing-34: 8.5rem;
+  --spacing-36: 9rem;
+  --spacing-38: 9.5rem;
+  --spacing-42: 10.5rem;
+  --spacing-46: 11.5rem;
+  --spacing-50: 12.5rem;
+  --spacing-72: 18rem;
+  --spacing-80: 20rem;
+  --spacing-88: 22rem;
+  --spacing-96: 24rem;
+  --spacing-112: 28rem;
+  --spacing-128: 32rem;
+
+  /* ── Border Radius ── */
+  --radius-xs:   0.25rem;
+  --radius-sm:   0.375rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.25rem;
+  --radius-3xl:  1.5rem;
+  --radius-4xl:  2rem;
+  --radius-pill: 9999px;
+
+  /* ── Box Shadows ── */
+  --shadow-card:        0 4px 32px rgba(0,0,0,0.4);
+  --shadow-card-hover:  0 16px 48px rgba(0,0,0,0.5);
+  --shadow-glow-blue:   0 0 40px rgba(46,107,255,0.3);
+  --shadow-glow-purple: 0 0 40px rgba(106,92,255,0.3);
+  --shadow-button:      0 4px 24px rgba(46,107,255,0.45);
+  --shadow-sm:          0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md:          0 8px 32px rgba(0,0,0,0.4);
+  --shadow-lg:          0 16px 64px rgba(0,0,0,0.5);
+  --shadow-xl:          0 24px 80px rgba(0,0,0,0.6);
+  --shadow-inner-glow:  inset 0 1px 0 rgba(255,255,255,0.06);
+
+  /* ── Backdrop Blur ── */
+  --backdrop-blur-xs:  4px;
+  --backdrop-blur-sm:  8px;
+  --backdrop-blur-md:  16px;
+  --backdrop-blur-lg:  24px;
+  --backdrop-blur-xl:  40px;
+  --backdrop-blur-2xl: 64px;
+
+  /* ── Z-Index ── */
+  --z-below:   -1;
+  --z-base:     0;
+  --z-above:    10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-tooltip:  500;
+  --z-cursor:   9999;
+
+  /* ── Animations ── */
+  --animate-float:       float 4s ease-in-out infinite;
+  --animate-pulse-slow:  pulse-slow 3s ease-in-out infinite;
+  --animate-glow:        glow 2.5s ease-in-out infinite alternate;
+  --animate-spin-slow:   spin-slow 20s linear infinite;
+  --animate-fade-in:     fade-in 0.6s ease forwards;
+  --animate-slide-up:    slide-up 0.6s ease forwards;
+
+  /* ── Transition Timing ── */
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Keyframes ── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(46,107,255,0.2); }
+  to   { box-shadow: 0 0 40px rgba(46,107,255,0.5), 0 0 80px rgba(106,92,255,0.2); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
