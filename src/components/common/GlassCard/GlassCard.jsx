@@ -20,7 +20,7 @@ function GlassCard({
 
   const paddingMap = {
     none: '',
-    sm: 'p-4',
+    sm: 'p-5',
     md: 'p-6',
     lg: 'p-8',
     xl: 'p-10',

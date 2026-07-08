@@ -90,7 +90,7 @@ function TechIconOrb({ Icon, label, color, positionClass, delay, duration, float
       >
         {/* Independent float animation */}
         <motion.div
-          className="w-11 h-11 rounded-2xl glass flex items-center justify-center shadow-md"
+          className="w-12 h-12 rounded-2xl glass flex items-center justify-center shadow-md"
           animate={reduced ? {} : { y: [0, floatY, 0] }}
           transition={{
             duration,
@@ -100,7 +100,7 @@ function TechIconOrb({ Icon, label, color, positionClass, delay, duration, float
           }}
           title={label}
         >
-          <Icon style={{ color, fontSize: 20 }} />
+          <Icon style={{ color, fontSize: 22 }} />
         </motion.div>
       </motion.div>
     </div>
@@ -113,7 +113,7 @@ function HeroAvatar() {
 
   return (
     <motion.div
-      className="relative flex flex-col items-center gap-10"
+      className="relative flex flex-col items-center gap-12"
       initial={{ opacity: 0, x: 60 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -130,7 +130,7 @@ function HeroAvatar() {
       />
 
       {/* Orbit anchor — same dimensions as the card so percentage positions hit card edges */}
-      <div className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto">
+      <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-[340px] lg:h-[340px] mx-auto">
 
         {/* Tech icon orbit */}
         {TECH_ICONS.map((icon) => (
@@ -210,7 +210,7 @@ function HeroAvatar() {
 
       {/* Status badges */}
       <motion.div
-        className="flex flex-wrap gap-2 justify-center max-w-xs"
+        className="flex flex-wrap gap-2.5 justify-center max-w-sm"
         variants={badgeContainer}
         initial="hidden"
         animate="visible"

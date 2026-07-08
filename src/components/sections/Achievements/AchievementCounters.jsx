@@ -15,14 +15,14 @@ function CounterItem({ label, value, suffix, isFirst }) {
       ref={ref}
       variants={fadeUp}
       className={cn(
-        'flex flex-col items-center text-center px-5 py-4',
+        'flex flex-col items-center text-center px-7 py-5',
         !isFirst && 'border-l'
       )}
-      style={!isFirst ? { borderColor: 'rgba(255,255,255,0.08)' } : {}}
+      style={!isFirst ? { borderColor: 'rgba(255,255,255,0.07)' } : {}}
     >
       <span
         className="font-heading font-bold text-white tabular-nums leading-none"
-        style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
+        style={{ fontSize: 'clamp(1.4rem, 2.2vw, 2rem)' }}
         aria-live="polite"
       >
         {isInView ? (
@@ -32,7 +32,7 @@ function CounterItem({ label, value, suffix, isFirst }) {
         )}
       </span>
       <span
-        className="text-xs font-mono tracking-wider uppercase mt-1.5 whitespace-nowrap"
+        className="text-xs font-mono tracking-[0.14em] uppercase mt-2 whitespace-nowrap"
         style={{ color: 'var(--color-muted)' }}
       >
         {label}

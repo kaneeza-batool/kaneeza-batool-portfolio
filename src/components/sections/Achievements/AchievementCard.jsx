@@ -33,19 +33,19 @@ function AchievementCard({ achievement }) {
       animate="rest"
       variants={cardVariants}
       transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative flex flex-col h-full rounded-2xl p-6 border"
+      className="relative flex flex-col h-full rounded-2xl p-7 border card-highlight"
       style={{
-        background: 'rgba(13, 31, 67, 0.75)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(13, 31, 67, 0.78)',
+        backdropFilter: 'blur(14px)',
         borderColor: 'rgba(255,255,255,0.08)',
       }}
       role="article"
       aria-label={`${achievement.title} — ${achievement.issuer}`}
     >
       {/* Top row: icon + year */}
-      <div className="flex items-start justify-between gap-3 mb-4">
+      <div className="flex items-start justify-between gap-3 mb-5">
         <div
-          className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{
             background: `rgba(${catColor.rgb}, 0.12)`,
             border: `1px solid rgba(${catColor.rgb}, 0.22)`,
@@ -82,7 +82,7 @@ function AchievementCard({ achievement }) {
 
       {/* Description */}
       <p
-        className="text-xs font-body leading-relaxed flex-1 mb-4"
+        className="text-xs font-body leading-relaxed flex-1 mb-5"
         style={{ color: 'var(--color-text-secondary)' }}
       >
         {achievement.description}

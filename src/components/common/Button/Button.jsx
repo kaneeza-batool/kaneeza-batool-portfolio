@@ -15,8 +15,8 @@ const variants = {
 
 const sizes = {
   sm: 'px-4 py-2 text-sm gap-1.5',
-  md: 'px-6 py-2.5 text-sm gap-2',
-  lg: 'px-8 py-3.5 text-base gap-2.5',
+  md: 'px-6 py-3 text-sm gap-2',
+  lg: 'px-9 py-4 text-base gap-2.5 tracking-wide',
 }
 
 const Button = forwardRef(

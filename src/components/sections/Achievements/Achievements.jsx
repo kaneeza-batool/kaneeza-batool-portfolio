@@ -50,7 +50,7 @@ function Achievements() {
 
       <Container>
         {/* ── Header row + counters ─────────────────────── */}
-        <div className="flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-12 mb-12 lg:mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-14 mb-16 lg:mb-20">
           {/* Section heading — left aligned on desktop */}
           <div className="flex-1">
             <SectionHeading
@@ -122,7 +122,7 @@ function Achievements() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportConfig}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {filteredGrid.map((achievement) => (
                   <motion.div key={achievement.id} variants={fadeUp}>

@@ -1,4 +1,5 @@
-import { SiGithub, SiLinkedin, SiLeetcode } from 'react-icons/si'
+import { SiGithub, SiLeetcode } from 'react-icons/si'
+import { FaLinkedinIn } from 'react-icons/fa6'
 import { HiMail, HiDownload } from 'react-icons/hi'
 import { SITE, SOCIAL, NAV_LINKS } from '@constants/index'
 
@@ -6,7 +7,7 @@ export const FOOTER_NAVIGATION = NAV_LINKS.map(({ label, href }) => ({ label, hr
 
 export const FOOTER_SOCIALS = [
   { label: 'GitHub',   href: SOCIAL.github,             icon: SiGithub   },
-  { label: 'LinkedIn', href: SOCIAL.linkedin,           icon: SiLinkedin },
+  { label: 'LinkedIn', href: SOCIAL.linkedin,           icon: FaLinkedinIn },
   { label: 'LeetCode', href: SOCIAL.leetcode,           icon: SiLeetcode },
   { label: 'Email',    href: `mailto:${SITE.email}`,   icon: HiMail     },
 ]
@@ -14,7 +15,7 @@ export const FOOTER_SOCIALS = [
 export const FOOTER_QUICK_LINKS = [
   { label: 'Download Resume', href: '/resume.pdf',      icon: HiDownload,  download: true, external: false },
   { label: 'GitHub',          href: SOCIAL.github,      icon: SiGithub,    download: false, external: true  },
-  { label: 'LinkedIn',        href: SOCIAL.linkedin,    icon: SiLinkedin,  download: false, external: true  },
+  { label: 'LinkedIn',        href: SOCIAL.linkedin,    icon: FaLinkedinIn,  download: false, external: true  },
   { label: 'LeetCode',        href: SOCIAL.leetcode,    icon: SiLeetcode,  download: false, external: true  },
   { label: 'Email',           href: `mailto:${SITE.email}`, icon: HiMail, download: false, external: false },
 ]

@@ -59,7 +59,7 @@ function Contact() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportConfig}
-        className="grid lg:grid-cols-[2fr_3fr] gap-8 xl:gap-14 mt-16 lg:mt-20 items-start"
+        className="grid lg:grid-cols-[2fr_3fr] gap-10 xl:gap-16 mt-20 lg:mt-24 items-start"
       >
         <ContactInfo />
         <ContactForm />

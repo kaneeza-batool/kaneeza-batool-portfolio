@@ -43,7 +43,7 @@ function Experience() {
           subtitle="Learning Through Real Opportunities"
           title="Experience"
           description="My experience comes from hands-on programs, communities, real projects, and a commitment to continuous learning. Every opportunity shaped how I think, build, and collaborate."
-          className="mb-12 lg:mb-16"
+          className="mb-16 lg:mb-20"
         />
 
         {/* ── Filter chips ──────────────────────────────── */}
@@ -52,7 +52,7 @@ function Experience() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-14"
         >
           <ExperienceFilterNav
             activeFilter={activeFilter}
@@ -70,8 +70,8 @@ function Experience() {
 
         {/* ── Learnings panel ───────────────────────────── */}
         <div
-          className="mt-20 pt-16"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          className="mt-24 pt-20"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
         >
           <ExperienceLearnings />
         </div>

@@ -12,14 +12,14 @@ function ContactItem({ item }) {
   const inner = (
     <div
       className={cn(
-        'flex items-center gap-4 p-3.5 rounded-xl glass-sm',
+        'flex items-center gap-4 p-4 rounded-xl glass-sm',
         'border border-transparent hover:border-accent-blue/20',
         'hover:bg-surface/70 transition-all duration-200 group'
       )}
     >
       <div
         className={cn(
-          'w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0',
+          'w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0',
           'bg-accent-blue/10 border border-accent-blue/20',
           'group-hover:bg-accent-blue/20 transition-colors duration-200'
         )}
@@ -185,7 +185,7 @@ function ContactInfo() {
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
-      className="flex flex-col gap-6"
+      className="flex flex-col gap-8"
     >
       <motion.div variants={fadeLeft} className="flex flex-col gap-2">
         {CONTACT_ITEMS.map((item) => (

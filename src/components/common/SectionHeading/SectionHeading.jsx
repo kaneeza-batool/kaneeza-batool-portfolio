@@ -21,20 +21,20 @@ function SectionHeading({
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
-      className={cn('flex flex-col gap-3', alignMap[align], className)}
+      className={cn('flex flex-col gap-4', alignMap[align], className)}
     >
       {subtitle && (
         <motion.span
           variants={fadeUp}
           className={cn(
-            'text-xs font-mono font-medium tracking-widest uppercase',
-            'text-accent-blue px-3 py-1 rounded-pill',
+            'text-xs font-mono font-medium tracking-[0.18em] uppercase',
+            'text-accent-blue px-3.5 py-1.5 rounded-pill',
             'bg-accent-blue/10 border border-accent-blue/20',
             'inline-flex items-center gap-2',
             align === 'center' && 'self-center'
           )}
         >
-          <span className="w-1 h-1 rounded-full bg-accent-blue inline-block" aria-hidden="true" />
+          <span className="w-1.5 h-1.5 rounded-full bg-accent-blue inline-block" aria-hidden="true" />
           {subtitle}
         </motion.span>
       )}
@@ -52,8 +52,8 @@ function SectionHeading({
         <motion.p
           variants={fadeUp}
           className={cn(
-            'text-body text-text-secondary max-w-2xl',
-            align === 'center' && 'mx-auto'
+            'text-body text-text-secondary leading-relaxed',
+            align === 'center' ? 'mx-auto max-w-xl' : 'max-w-2xl'
           )}
         >
           {description}

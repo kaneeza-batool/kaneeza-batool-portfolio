@@ -83,9 +83,9 @@ function ProjectCard({ project, onViewDetails }) {
       </div>
 
       {/* ── Content area ── */}
-      <div className="flex flex-col flex-1 p-4 gap-3">
+      <div className="flex flex-col flex-1 p-5 gap-4">
         <div>
-          <h3 className="text-base font-heading font-bold text-white mb-1 leading-tight">
+          <h3 className="text-base font-heading font-bold text-white mb-1.5 leading-tight tracking-tight">
             {project.title}
           </h3>
           <p
@@ -97,7 +97,7 @@ function ProjectCard({ project, onViewDetails }) {
         </div>
 
         {/* Tech chips (max 4) */}
-        <div className="flex flex-wrap gap-1">
+        <div className="flex flex-wrap gap-1.5">
           {project.techStack.slice(0, 4).map((tech) => (
             <span
               key={tech}

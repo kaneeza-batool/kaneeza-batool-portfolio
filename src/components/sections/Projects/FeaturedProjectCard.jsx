@@ -151,10 +151,10 @@ function FeaturedProjectCard({ project, onViewDetails }) {
       </div>
 
       {/* ── Content area ── */}
-      <div className="flex flex-col flex-1 p-6 gap-4">
+      <div className="flex flex-col flex-1 p-7 gap-5">
         {/* Title + description */}
         <div>
-          <h3 className="text-xl font-heading font-bold text-white mb-2 leading-tight">
+          <h3 className="text-2xl font-heading font-bold text-white mb-2.5 leading-tight tracking-tight">
             {project.title}
           </h3>
           <p
@@ -166,7 +166,7 @@ function FeaturedProjectCard({ project, onViewDetails }) {
         </div>
 
         {/* Tech chips */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2">
           {project.techStack.slice(0, 5).map((tech) => (
             <TechChip key={tech} tech={tech} color={color} />
           ))}
@@ -181,7 +181,7 @@ function FeaturedProjectCard({ project, onViewDetails }) {
         </div>
 
         {/* Action buttons */}
-        <div className="flex items-center gap-2 mt-auto pt-2 flex-wrap">
+        <div className="flex items-center gap-3 mt-auto pt-3 flex-wrap">
           {project.github && (
             <a
               href={project.github}

@@ -41,7 +41,7 @@ function FloatingInput({ id, label, type = 'text', name, value, onChange, onBlur
           'bg-surface/40 border transition-all duration-200 outline-none',
           'placeholder:text-transparent',
           focused
-            ? 'border-accent-blue/60 bg-surface/70 shadow-[0_0_0_3px_rgba(46,107,255,0.12)]'
+            ? 'border-accent-blue/50 bg-surface/80 shadow-[0_0_0_4px_rgba(46,107,255,0.1),inset_0_1px_0_rgba(255,255,255,0.04)]'
             : error
             ? 'border-error/50 hover:border-error/70'
             : 'border-white/10 hover:border-white/20'
@@ -94,7 +94,7 @@ function FloatingSelect({ id, label, name, value, onChange, onBlur, onFocus, err
           'bg-surface/40 border transition-all duration-200 outline-none appearance-none cursor-pointer',
           value ? 'text-white' : 'text-transparent',
           focused
-            ? 'border-accent-blue/60 bg-surface/70 shadow-[0_0_0_3px_rgba(46,107,255,0.12)]'
+            ? 'border-accent-blue/50 bg-surface/80 shadow-[0_0_0_4px_rgba(46,107,255,0.1),inset_0_1px_0_rgba(255,255,255,0.04)]'
             : error
             ? 'border-error/50 hover:border-error/70'
             : 'border-white/10 hover:border-white/20'
@@ -166,7 +166,7 @@ function FloatingTextarea({ id, label, name, value, onChange, onBlur, onFocus, e
           'bg-surface/40 border transition-all duration-200 outline-none',
           'placeholder:text-transparent',
           focused
-            ? 'border-accent-blue/60 bg-surface/70 shadow-[0_0_0_3px_rgba(46,107,255,0.12)]'
+            ? 'border-accent-blue/50 bg-surface/80 shadow-[0_0_0_4px_rgba(46,107,255,0.1),inset_0_1px_0_rgba(255,255,255,0.04)]'
             : error
             ? 'border-error/50 hover:border-error/70'
             : 'border-white/10 hover:border-white/20'
@@ -428,9 +428,9 @@ function ContactForm() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-6"
             >
-              <div className="grid sm:grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-2 gap-6">
                 <FloatingInput
                   id="name"
                   name="name"
@@ -510,7 +510,7 @@ function ContactForm() {
                 )}
               </AnimatePresence>
 
-              <div className="flex items-center justify-between gap-4 pt-1">
+              <div className="flex items-center justify-between gap-4 pt-3">
                 <p className="text-xs text-muted font-body">
                   <span className="text-accent-blue">*</span> Required fields
                 </p>

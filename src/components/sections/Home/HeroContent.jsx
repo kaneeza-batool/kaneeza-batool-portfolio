@@ -100,7 +100,7 @@ function RoleText() {
 function HeroContent() {
   return (
     <motion.div
-      className="flex flex-col gap-5 lg:gap-6"
+      className="flex flex-col gap-6 lg:gap-8"
       variants={contentContainer}
       initial="hidden"
       animate="visible"
@@ -108,14 +108,14 @@ function HeroContent() {
       {/* Greeting line */}
       <motion.div variants={fadeUp} className="flex items-center gap-3">
         <span
-          className="h-px w-8 shrink-0"
+          className="h-px w-10 shrink-0"
           style={{
             background:
               'linear-gradient(90deg, #2E6BFF 0%, #6A5CFF 100%)',
           }}
           aria-hidden="true"
         />
-        <p className="font-mono text-sm text-accent-blue tracking-widest uppercase font-medium">
+        <p className="font-mono text-sm text-accent-blue tracking-[0.18em] uppercase font-medium">
           Hi, I'm
         </p>
       </motion.div>
@@ -137,7 +137,7 @@ function HeroContent() {
       {/* Description */}
       <motion.p
         variants={fadeUp}
-        className="text-body text-text-secondary max-w-[520px] leading-relaxed"
+        className="text-body text-text-secondary max-w-[500px] leading-loose"
       >
         CS undergraduate building real web applications from scratch —
         navigating the MERN stack and staying genuinely curious about
@@ -147,7 +147,7 @@ function HeroContent() {
       </motion.p>
 
       {/* CTA Buttons */}
-      <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-1">
+      <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-2">
         <Button
           variant="primary"
           size="lg"
@@ -179,7 +179,7 @@ function HeroContent() {
       {/* Social icons */}
       <motion.div
         variants={fadeUp}
-        className="flex items-center gap-2 pt-1"
+        className="flex items-center gap-3 pt-1"
         aria-label="Social links"
       >
         {HERO_SOCIALS.map((social) => (

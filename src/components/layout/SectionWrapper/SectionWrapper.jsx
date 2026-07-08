@@ -13,7 +13,7 @@ function SectionWrapper({
   return (
     <Tag
       id={id}
-      className={cn('relative py-24 lg:py-32', className)}
+      className={cn('relative py-28 lg:py-36 xl:py-44', className)}
       {...props}
     >
       {noContainer ? children : (

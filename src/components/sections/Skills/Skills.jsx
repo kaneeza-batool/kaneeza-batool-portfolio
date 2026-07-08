@@ -71,7 +71,7 @@ function Skills() {
           subtitle="Technologies I Work With"
           title="Skills"
           description="These technologies represent my current toolkit — a living, growing stack shaped through real projects, curiosity, and a genuine love for building."
-          className="mb-12 lg:mb-16"
+          className="mb-16 lg:mb-20"
         />
 
         {/* ── Category Nav ────────────────────────────── */}
@@ -80,7 +80,7 @@ function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="flex justify-center mb-10"
+          className="flex justify-center mb-12"
         >
           <SkillCategoryNav
             activeCategory={activeCategory}
@@ -100,7 +100,7 @@ function Skills() {
                 opacity: 0,
                 transition: { duration: 0.18, ease: 'easeIn' },
               }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-6"
             >
               {filteredSkills.map((skill) => (
                 <motion.div
@@ -132,7 +132,7 @@ function Skills() {
         </motion.p>
 
         {/* ── Always Learning Panel ───────────────────── */}
-        <div className="mt-16">
+        <div className="mt-20">
           <SkillsAlwaysLearning />
         </div>
       </Container>

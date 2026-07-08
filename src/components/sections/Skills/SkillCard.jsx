@@ -28,21 +28,18 @@ function SkillCard({ skill }) {
         hover={false}
         padding="md"
         className={[
-          'h-full flex flex-col gap-4',
+          'h-full flex flex-col gap-5',
           'transition-all duration-300',
-          'hover:border-white/15 hover:shadow-[0_8px_40px_rgba(0,0,0,0.35)]',
+          'hover:border-white/15 hover:shadow-[0_16px_48px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(255,255,255,0.08)]',
         ].join(' ')}
-        style={{
-          '--hover-glow': `${color}22`,
-        }}
       >
         {/* ── Icon ── */}
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300"
+          className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
           style={{ background: iconBg }}
           aria-hidden="true"
         >
-          <Icon size={24} style={{ color: iconColor }} />
+          <Icon size={28} style={{ color: iconColor }} />
         </div>
 
         {/* ── Name + Status ── */}
@@ -82,8 +79,8 @@ function SkillCard({ skill }) {
 
           {/* Track */}
           <div
-            className="h-[3px] rounded-full overflow-hidden"
-            style={{ background: 'rgba(255,255,255,0.06)' }}
+            className="h-[5px] rounded-full overflow-hidden"
+            style={{ background: 'rgba(255,255,255,0.07)' }}
           >
             {/* Fill — animates when scrolled into view */}
             <motion.div

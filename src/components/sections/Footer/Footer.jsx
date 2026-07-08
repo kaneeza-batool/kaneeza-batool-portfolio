@@ -39,7 +39,7 @@ const FooterBranding = memo(function FooterBranding() {
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
-      className="flex flex-col items-center text-center gap-5 mb-16"
+      className="flex flex-col items-center text-center gap-6 mb-20"
     >
       <div className="flex items-center gap-3">
         <KBMonogram />
@@ -277,7 +277,7 @@ const FooterAvailability = memo(function FooterAvailability({ reducedMotion }) {
 
 const FooterColumns = memo(function FooterColumns({ reducedMotion }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10 mb-20">
       <FooterNav />
       <FooterQuickLinks />
       <FooterTechStack />
@@ -291,8 +291,8 @@ const FooterBottomBar = memo(function FooterBottomBar({ reducedMotion, onScrollT
     <div>
       {/* Divider */}
       <div
-        className="h-px mb-8"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)' }}
+        className="h-px mb-10"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(46,107,255,0.25), rgba(106,92,255,0.2), transparent)' }}
         aria-hidden="true"
       />
 
@@ -310,10 +310,10 @@ const FooterBottomBar = memo(function FooterBottomBar({ reducedMotion, onScrollT
         {/* Center: quote */}
         <p
           className={cn(
-            'order-2 text-xs font-body italic',
-            'bg-gradient-to-r from-accent-blue to-accent-purple',
+            'order-2 text-sm font-body italic',
+            'bg-gradient-to-r from-accent-blue via-accent-purple to-accent-blue',
             'bg-clip-text text-transparent',
-            'max-w-xs'
+            'max-w-sm text-center tracking-wide'
           )}
         >
           {QUOTE}
@@ -363,7 +363,7 @@ function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden pt-20 pb-10"
+      className="relative overflow-hidden pt-28 pb-12"
       aria-label="Site footer"
       role="contentinfo"
     >

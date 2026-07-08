@@ -21,9 +21,9 @@ import FocusWeeklyProgress from './FocusWeeklyProgress'
 
 function PanelLabel({ children }) {
   return (
-    <div className="flex items-center gap-2 mb-4">
-      <span className="w-1 h-4 rounded-full bg-accent-blue inline-block" aria-hidden="true" />
-      <h3 className="text-caption font-heading font-semibold text-white tracking-wide">
+    <div className="flex items-center gap-2.5 mb-5">
+      <span className="w-1 h-5 rounded-full bg-accent-blue inline-block" aria-hidden="true" />
+      <h3 className="text-sm font-heading font-semibold text-white tracking-wide">
         {children}
       </h3>
     </div>
@@ -53,7 +53,7 @@ function CurrentFocus() {
       />
 
       {/* Dashboard grid */}
-      <div className="mt-12 grid lg:grid-cols-[1fr_380px] gap-6 items-start">
+      <div className="mt-16 grid lg:grid-cols-[1fr_380px] gap-8 items-start">
 
         {/* ── LEFT COLUMN ─────────────────────────────────── */}
         <motion.div
@@ -61,12 +61,12 @@ function CurrentFocus() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-10"
         >
           {/* Current Projects */}
           <section aria-label="Current projects">
             <PanelLabel>Current Projects</PanelLabel>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-5">
               {CURRENT_PROJECTS.map((project, i) => (
                 <FocusProjectCard key={project.id} project={project} index={i} />
               ))}
@@ -76,7 +76,7 @@ function CurrentFocus() {
           {/* Current Learning */}
           <section aria-label="Current learning">
             <PanelLabel>Currently Learning</PanelLabel>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-2 gap-5">
               {CURRENT_LEARNING.map((item, i) => (
                 <FocusLearningCard key={item.id} item={item} index={i} />
               ))}
@@ -90,7 +90,7 @@ function CurrentFocus() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="flex flex-col gap-6"
+          className="flex flex-col gap-7"
         >
           {/* Goals */}
           <section aria-label="Current goals">
@@ -136,7 +136,7 @@ function CurrentFocus() {
       </div>
 
       {/* ── BOTTOM: Weekly Progress ──────────────────────── */}
-      <div className="mt-6">
+      <div className="mt-10">
         <FocusWeeklyProgress />
       </div>
     </SectionWrapper>

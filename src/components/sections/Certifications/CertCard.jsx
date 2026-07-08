@@ -99,10 +99,10 @@ function CertCard({ cert }) {
       animate="rest"
       variants={cardVariants}
       transition={{ duration: 0.32, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative flex flex-col h-full rounded-2xl border overflow-hidden"
+      className="relative flex flex-col h-full rounded-2xl border overflow-hidden card-highlight"
       style={{
-        background: 'rgba(13,31,67,0.78)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(13,31,67,0.82)',
+        backdropFilter: 'blur(14px)',
         borderColor: 'rgba(255,255,255,0.08)',
       }}
       role="article"
@@ -127,7 +127,7 @@ function CertCard({ cert }) {
       )}
 
       {/* Thumbnail */}
-      <div className="h-36 flex-shrink-0 overflow-hidden relative">
+      <div className="h-40 flex-shrink-0 overflow-hidden relative">
         {cert.certificateImage ? (
           <motion.div variants={imageVariants} transition={{ duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }} className="w-full h-full">
             <img
@@ -157,10 +157,10 @@ function CertCard({ cert }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 p-5">
+      <div className="flex flex-col flex-1 p-6">
         {/* Category chip */}
         <span
-          className="inline-flex self-start items-center px-2.5 py-0.5 rounded-pill text-xs font-body font-medium mb-3"
+          className="inline-flex self-start items-center px-2.5 py-1 rounded-pill text-xs font-body font-medium mb-3.5"
           style={{
             background: `rgba(${colors.rgb},0.1)`,
             border: `1px solid rgba(${colors.rgb},0.22)`,
@@ -198,7 +198,7 @@ function CertCard({ cert }) {
         </p>
 
         {/* Skills chips */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           {cert.skills.slice(0, 4).map((skill) => (
             <span
               key={skill}

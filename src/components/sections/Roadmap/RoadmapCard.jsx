@@ -38,13 +38,13 @@ function RoadmapCard({ item, expanded, onToggle, side = 'left' }) {
           }}
         />
 
-        <div className="p-5 sm:p-6">
+        <div className="p-6 sm:p-7">
           {/* Header row */}
-          <div className="flex items-start justify-between gap-3 mb-4">
+          <div className="flex items-start justify-between gap-3 mb-5">
             <div className="flex items-center gap-3">
               {/* Stage icon */}
               <div
-                className="flex items-center justify-center w-9 h-9 rounded-xl flex-shrink-0"
+                className="flex items-center justify-center w-10 h-10 rounded-xl flex-shrink-0"
                 style={{
                   backgroundColor: cfg.bgColor,
                   border: `1px solid ${cfg.borderColor}`,
@@ -93,7 +93,7 @@ function RoadmapCard({ item, expanded, onToggle, side = 'left' }) {
           </p>
 
           {/* Skills chips */}
-          <div className="flex flex-wrap gap-1.5 mb-5">
+          <div className="flex flex-wrap gap-2 mb-6">
             {item.skills.map((skill) => (
               <span
                 key={skill}

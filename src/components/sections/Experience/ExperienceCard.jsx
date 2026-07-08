@@ -25,19 +25,20 @@ function ExperienceCard({ exp }) {
   return (
     <article
       className={cn(
-        'glass rounded-2xl p-6 h-full',
+        'glass rounded-2xl p-7 h-full',
         'transition-all duration-300',
-        'hover:border-accent-blue/30 hover:shadow-[0_8px_32px_rgba(46,107,255,0.12)]',
+        'hover:border-accent-blue/25 hover:shadow-[0_20px_56px_rgba(0,0,0,0.45),_0_0_28px_rgba(46,107,255,0.08)]',
+        'card-highlight',
         'group'
       )}
       aria-label={`${exp.organization} — ${exp.role}`}
     >
       {/* ── Header ──────────────────────────────────── */}
-      <div className="flex items-start gap-4 mb-5">
+      <div className="flex items-start gap-4 mb-6">
         {/* Logo placeholder */}
         <div
           className={cn(
-            'flex-shrink-0 w-11 h-11 rounded-xl',
+            'flex-shrink-0 w-12 h-12 rounded-xl',
             'bg-gradient-to-br',
             logoGradient,
             'flex items-center justify-center',
@@ -86,7 +87,7 @@ function ExperienceCard({ exp }) {
 
       {/* ── Technologies ─────────────────────────────── */}
       {exp.technologies.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mb-4" aria-label="Technologies used">
+        <div className="flex flex-wrap gap-2 mb-5" aria-label="Technologies used">
           {exp.technologies.map((tech) => (
             <span
               key={tech}
@@ -104,7 +105,7 @@ function ExperienceCard({ exp }) {
       )}
 
       {/* ── Achievements ─────────────────────────────── */}
-      <ul className="space-y-1.5" aria-label="Achievements">
+      <ul className="space-y-2" aria-label="Achievements">
         {exp.achievements.map((item) => (
           <li key={item} className="flex items-center gap-2">
             <FaCheckCircle

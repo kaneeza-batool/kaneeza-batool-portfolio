@@ -73,7 +73,7 @@ function About() {
           subtitle="My Journey"
           title="About Me"
           description="A CS undergraduate who builds things to learn, learns things to build — and is genuinely excited about what comes next."
-          className="mb-16 lg:mb-20"
+          className="mb-20 lg:mb-24"
         />
 
         {/*
@@ -82,16 +82,16 @@ function About() {
             Right ~55% — timeline + stats + highlight cards
           Mobile: single column, left content first
         */}
-        <div className="grid lg:grid-cols-[45fr_55fr] gap-12 xl:gap-16 items-start">
+        <div className="grid lg:grid-cols-[45fr_55fr] gap-14 xl:gap-20 items-start">
 
           {/* ── Left column ────────────────────────────── */}
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-12">
             <AboutEditorial />
             <AboutFocusPanel />
           </div>
 
           {/* ── Right column ───────────────────────────── */}
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-12">
             <AboutTimeline />
             <AboutStats />
             <AboutHighlights />
@@ -99,7 +99,7 @@ function About() {
         </div>
 
         {/* Quote — full width, below both columns */}
-        <div className="mt-14">
+        <div className="mt-20">
           <AboutQuote />
         </div>
       </Container>

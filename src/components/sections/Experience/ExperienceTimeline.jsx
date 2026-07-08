@@ -46,7 +46,7 @@ function ExperienceRow({ exp, index, prefersReducedMotion }) {
     : fadeRight
 
   return (
-    <div className="relative flex items-start mb-12 md:mb-16 last:mb-0">
+    <div className="relative flex items-start mb-14 md:mb-20 last:mb-0">
       {/* ── Timeline node: left-6 mobile, center desktop ─── */}
       <div
         className="absolute top-5 z-10 left-6 md:left-1/2 md:-translate-x-1/2"

@@ -88,7 +88,7 @@ function Projects() {
           subtitle="Building Through Real Projects"
           title="Featured Projects"
           description="These projects represent my learning journey through practical problem solving, experimentation, and continuous improvement. Each one challenged me to think differently and build more thoughtfully."
-          className="mb-12 lg:mb-16"
+          className="mb-16 lg:mb-20"
         />
 
         {/* ── Category filter nav ───────────────────────── */}
@@ -97,7 +97,7 @@ function Projects() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="flex justify-center mb-14"
+          className="flex justify-center mb-16"
         >
           <ProjectFilterNav
             activeFilter={activeFilter}
@@ -122,7 +122,7 @@ function Projects() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportConfig}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mb-20"
               >
                 {featuredProjects.map((project) => (
                   <motion.div key={project.id} variants={fadeUp}>
@@ -180,8 +180,8 @@ function Projects() {
 
         {/* ── Learnings panel ───────────────────────────── */}
         <div
-          className="mt-20 pt-16"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          className="mt-24 pt-20"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
         >
           <ProjectLearnings />
         </div>

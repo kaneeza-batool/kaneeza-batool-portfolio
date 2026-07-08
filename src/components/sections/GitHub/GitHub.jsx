@@ -62,6 +62,7 @@ function GitHub() {
         subtitle="Building in Public"
         title="GitHub"
         description="My GitHub profile reflects continuous learning through projects, experimentation, and consistent contributions — every commit a step forward."
+        className="mb-16"
       />
 
       {loading && <GitHubSkeleton />}
@@ -76,10 +77,10 @@ function GitHub() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
-          className="flex flex-col gap-6"
+          className="flex flex-col gap-8"
         >
           {/* Profile + Stats */}
-          <div className="grid lg:grid-cols-[300px_1fr] gap-6 items-start">
+          <div className="grid lg:grid-cols-[300px_1fr] gap-8 items-start">
             <GitHubProfileCard profile={profile} stats={stats} />
             <GitHubStatsRow stats={stats} />
           </div>
@@ -88,13 +89,13 @@ function GitHub() {
           <GitHubPinnedRepos repos={featuredRepositories} />
 
           {/* Languages + Recent repos */}
-          <div className="grid lg:grid-cols-[280px_1fr] gap-6 items-start">
+          <div className="grid lg:grid-cols-[280px_1fr] gap-8 items-start">
             <GitHubLanguages languages={languages} />
             <GitHubRecentRepos repos={repositories} />
           </div>
 
           {/* Contribution graph + Activity */}
-          <div className="grid lg:grid-cols-[1fr_320px] gap-6 items-start">
+          <div className="grid lg:grid-cols-[1fr_320px] gap-8 items-start">
             <GitHubContribution />
             <GitHubActivity events={activity} repos={repositories} />
           </div>

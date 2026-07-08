@@ -145,7 +145,7 @@ function Home() {
             Right 45% — HeroAvatar (card, tech icons, badges)
           Stacks to single column on mobile; avatar appears below content
         */}
-        <div className="grid lg:grid-cols-[55fr_45fr] gap-16 xl:gap-20 items-center">
+        <div className="grid lg:grid-cols-[55fr_45fr] gap-12 xl:gap-20 items-center">
           {/* Left: textual content */}
           <HeroContent />
 
