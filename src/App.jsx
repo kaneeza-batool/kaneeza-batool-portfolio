@@ -11,6 +11,7 @@ import {
   Roadmap,
   CurrentFocus,
   Contact,
+  Footer,
 } from '@components/sections'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Roadmap />
       <CurrentFocus />
       <Contact />
+      <Footer />
     </AppLayout>
   )
 }
