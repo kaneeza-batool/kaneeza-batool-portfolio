@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { FiZap, FiTrendingUp, FiActivity, FiRefreshCw } from 'react-icons/fi'
 import { fadeUp, staggerContainer, viewportConfig } from '@utils/motion'
 import { getUsername } from '@services/github'
-import CountUp from 'react-countup'
+import _CountUp from 'react-countup'
+const CountUp = typeof _CountUp === 'function' ? _CountUp : _CountUp.default
 import { usePrefersReducedMotion } from '@hooks/usePrefersReducedMotion'
 
 const CACHE_TTL  = 15 * 60 * 1000

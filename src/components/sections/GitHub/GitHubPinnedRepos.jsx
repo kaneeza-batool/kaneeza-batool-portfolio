@@ -23,11 +23,8 @@ function PinnedRepoCard({ repo }) {
       href={repo.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      variants={fadeUp}
-      initial="rest"
+      variants={{ ...cardHover, hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
       whileHover="hover"
-      animate="rest"
-      {...{ variants: { ...cardHover, hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } } }}
       className="glass rounded-2xl p-5 flex flex-col gap-3 border border-white/5 hover:border-accent-blue/25 transition-colors duration-300 group cursor-pointer"
       aria-label={`Open ${repo.name} on GitHub`}
     >

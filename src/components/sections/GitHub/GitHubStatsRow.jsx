@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import CountUp from 'react-countup'
+import _CountUp from 'react-countup'
+const CountUp = typeof _CountUp === 'function' ? _CountUp : _CountUp.default
 import { FiCode, FiUsers, FiUserPlus, FiAward } from 'react-icons/fi'
 import { staggerContainer, fadeUp, viewportConfig } from '@utils/motion'
 import { usePrefersReducedMotion } from '@hooks/usePrefersReducedMotion'

@@ -1,5 +1,6 @@
 import { HiMail, HiLocationMarker } from 'react-icons/hi'
-import { SiGithub, SiLinkedin, SiLeetcode } from 'react-icons/si'
+import { SiGithub, SiLeetcode } from 'react-icons/si'
+import { FaLinkedin } from 'react-icons/fa'
 
 export const CONTACT_ITEMS = [
   {
@@ -18,7 +19,7 @@ export const CONTACT_ITEMS = [
   },
   {
     key: 'linkedin',
-    icon: SiLinkedin,
+    icon: FaLinkedin,
     label: 'LinkedIn',
     value: 'kaneeza-batool',
     href: 'https://linkedin.com/in/kaneeza-batool',
@@ -65,7 +66,7 @@ export const SOCIAL_LINKS = [
   },
   {
     platform: 'LinkedIn',
-    icon: SiLinkedin,
+    icon: FaLinkedin,
     href: 'https://linkedin.com/in/kaneeza-batool',
     tooltip: 'Connect on LinkedIn',
     glowClass: 'hover:shadow-[0_0_20px_rgba(10,102,194,0.4)]',

@@ -18,15 +18,16 @@ export function useLenis() {
 
     setLenis(lenis)
 
+    let running = true
     function raf(time) {
+      if (!running) return
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
-
-    const rafId = requestAnimationFrame(raf)
+    requestAnimationFrame(raf)
 
     return () => {
-      cancelAnimationFrame(rafId)
+      running = false
       lenis.destroy()
       setLenis(null)
     }
